@@ -1,0 +1,22 @@
+.main-header {
+  border-bottom: 1px solid $gray300;
+}
+
+.main-header-inner {
+  @include container;
+  @include flex-arrange(space-between);
+  padding: 10px 0;
+
+  button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid $gray300;
+    background: $white;
+    cursor: pointer;
+    @include font-style(1.6rem, $gray900);
+  }
+
+  img {
+    vertical-align: middle;
+  }
+}
