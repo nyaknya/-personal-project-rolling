@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './PrimaryButton.module.scss';
 
 const cn = classNames.bind(styles);
+
 interface PrimaryButtonProps {
   onClick: () => void;
   children: ReactNode;

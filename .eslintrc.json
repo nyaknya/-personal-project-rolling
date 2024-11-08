@@ -9,7 +9,9 @@
       "ignorePackages",
       { "ts": "never", "tsx": "never" }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/button-has-type": "off"
   },
   "settings": {
     "import/resolver": {

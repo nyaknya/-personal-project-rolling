@@ -1,10 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './MainPage.module.scss';
 import MainHeader from '../../components/Header/MainHeader';
+import PrimaryButton from '../../components/Buttons/PrimaryButton';
 
 const cn = classNames.bind(styles);
 
 export default function MainPage() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/list');
+  };
+
   return (
     <>
       <MainHeader />
@@ -35,6 +43,11 @@ export default function MainPage() {
               표현해보세요
             </h2>
             <p>롤링 페이퍼에 이모지를 추가할 수 있어요.</p>
+          </div>
+          <div>
+            <PrimaryButton onClick={handleButtonClick}>
+              구경해보기
+            </PrimaryButton>
           </div>
         </div>
       </main>
