@@ -1,4 +1,45 @@
 .primary-button {
   background: $purple600;
-  color: $white;
+  border-radius: 12px;
+  padding: 14px 24px;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.2s all;
+  @include font-style(1.8rem, $white, 700);
+
+  &.large {
+    height: 56px;
+  }
+
+  &.medium {
+    max-width: 280px;
+    height: 56px;
+  }
+
+  &.small {
+    max-width: 120px;
+    height: 40px;
+  }
+
+  &.xsmall {
+    max-width: 92px;
+    height: 40px;
+  }
+
+  &:disabled {
+    background: $gray300;
+  }
+
+  &:hover {
+    background: $purple700;
+  }
+
+  &:active,
+  &:focus {
+    background: $purple800;
+  }
+
+  &:focus {
+    border: 2px solid $purple900;
+  }
 }

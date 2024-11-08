@@ -7,8 +7,9 @@ const cn = classNames.bind(styles);
 interface PrimaryButtonProps {
   onClick: () => void;
   children: ReactNode;
-  size?: 'L' | 'M' | 'S';
+  size?: 'L' | 'M' | 'S' | 'XS';
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export default function PrimaryButton({
@@ -16,6 +17,7 @@ export default function PrimaryButton({
   children,
   size = 'M',
   type = 'button',
+  disabled = false,
 }: PrimaryButtonProps) {
   return (
     <button
@@ -25,7 +27,9 @@ export default function PrimaryButton({
         large: size === 'L',
         medium: size === 'M',
         small: size === 'S',
+        xsmall: size === 'XS',
       })}
+      disabled={disabled}
     >
       {children}
     </button>
