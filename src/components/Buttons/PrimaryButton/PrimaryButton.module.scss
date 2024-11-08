@@ -43,3 +43,11 @@
     border: 2px solid $purple900;
   }
 }
+
+@media (max-width: 768px) {
+  .primary-button {
+    &.medium {
+      max-width: 100%;
+    }
+  }
+}
