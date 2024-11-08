@@ -44,11 +44,9 @@ export default function MainPage() {
             </h2>
             <p>롤링 페이퍼에 이모지를 추가할 수 있어요.</p>
           </div>
-          <div>
-            <PrimaryButton onClick={handleButtonClick}>
-              구경해보기
-            </PrimaryButton>
-          </div>
+        </div>
+        <div className={cn('main-button')}>
+          <PrimaryButton onClick={handleButtonClick}>구경해보기</PrimaryButton>
         </div>
       </main>
     </>

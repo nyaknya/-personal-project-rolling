@@ -11,7 +11,8 @@
     ],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-undef": "off"
   },
   "settings": {
     "import/resolver": {
