@@ -12,6 +12,10 @@ export default function ListPage() {
       <main>
         <section className={cn('list-content')}>
           <h2>인기 롤링 페이퍼 🔥</h2>
+          <CardList sort="like" />
+        </section>
+        <section className={cn('list-content')}>
+          <h2>최근에 만든 롤링 페이퍼 ⭐️️</h2>
           <CardList />
         </section>
       </main>
