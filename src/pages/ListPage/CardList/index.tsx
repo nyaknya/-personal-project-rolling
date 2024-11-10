@@ -14,7 +14,6 @@ export default function CardList() {
     try {
       const data = await apiRequest({ endpoint: '/recipients/' });
       setCardlist(data.results);
-      console.log(data.results);
     } catch (error) {
       console.error(error);
     }
@@ -26,9 +25,13 @@ export default function CardList() {
 
   return (
     <div className={cn('card-list-wrap')}>
-      <ul>
+      <ul className={cn('card-list')}>
         {cardlist?.map((list) => {
-          return <Card key={list.id} data={list} />;
+          return (
+            <li key={list.id}>
+              <Card data={list} />
+            </li>
+          );
         })}
       </ul>
     </div>

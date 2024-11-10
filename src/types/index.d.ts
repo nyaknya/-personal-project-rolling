@@ -32,5 +32,5 @@ export interface RecentMessages {
 export interface TopReactions {
   id: number;
   emoji: string;
-  number: number;
+  count: number;
 }

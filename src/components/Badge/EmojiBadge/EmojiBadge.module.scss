@@ -1,0 +1,8 @@
+.emoji-badge {
+  @include border-circle;
+  @include flex-arrange;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.54);
+  color: $white;
+}

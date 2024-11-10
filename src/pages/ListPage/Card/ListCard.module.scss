@@ -1,0 +1,78 @@
+.list-card {
+  height: 260px;
+  padding: 30px 24px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  h3 {
+    @include font-style(2.4rem, $black, 700);
+    padding-bottom: 12px;
+  }
+
+  img {
+    width: 28px;
+    height: 28px;
+    @include border-circle;
+    border: 2px solid $white;
+  }
+
+  .sender-wrap {
+    display: flex;
+    img {
+      margin-left: -12px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    padding-bottom: 12px;
+  }
+
+  .rest-count {
+    padding: 6px;
+    font-size: 1.2rem;
+    background: $white;
+    @include border-circle;
+    @include flex-arrange;
+    margin-left: -12px;
+  }
+
+  .iconlist {
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    ul {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &.purple {
+    background: $purple200 url('../../../../public/images/pattern01.svg')
+      no-repeat right bottom;
+  }
+
+  &.beige {
+    background: $beige200 url('../../../../public/images/pattern02.svg')
+      no-repeat right bottom;
+  }
+
+  &.blue {
+    background: $blue200 url('../../../../public/images/pattern03.svg')
+      no-repeat right bottom;
+  }
+
+  &.green {
+    background: $green200 url('../../../../public/images/pattern04.svg')
+      no-repeat right bottom;
+  }
+}

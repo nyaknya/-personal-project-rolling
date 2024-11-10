@@ -2,3 +2,9 @@
   @include container;
   padding-top: 16px;
 }
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
