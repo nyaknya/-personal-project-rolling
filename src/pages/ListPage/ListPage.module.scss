@@ -6,3 +6,10 @@
     @include font-style(24px, $black, 700);
   }
 }
+
+.button-area {
+  @include container;
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 0;
+}
