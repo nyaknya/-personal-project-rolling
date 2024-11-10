@@ -7,7 +7,12 @@
     "import/extensions": [
       "error",
       "ignorePackages",
-      { "ts": "never", "tsx": "never" }
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
     ],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
@@ -17,7 +22,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
       }
     }
   }

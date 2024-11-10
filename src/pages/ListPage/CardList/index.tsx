@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './CardList.module.scss';
 import apiRequest from '../../../utils/apiRequest';
+import Card from '../Card';
+import { CardListResultData } from '../../../types';
 
 const cn = classNames.bind(styles);
 
 export default function CardList() {
-  const [cardlist, setCardlist] = useState(null);
+  const [cardlist, setCardlist] = useState<CardListResultData[]>([]);
 
   const getCardlist = async () => {
     try {
       const data = await apiRequest({ endpoint: '/recipients/' });
-      setCardlist(data);
-      console.log(data);
+      setCardlist(data.results);
+      console.log(data.results);
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +27,9 @@ export default function CardList() {
   return (
     <div className={cn('card-list-wrap')}>
       <ul>
-        <li>카드리스트 들어올예정</li>
+        {cardlist?.map((list) => {
+          return <Card key={list.id} data={list} />;
+        })}
       </ul>
     </div>
   );
