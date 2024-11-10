@@ -53,7 +53,7 @@ export default function Card({ data }: ListCardProps) {
             <strong>{messageCount}</strong>명이 작성했어요!
           </p>
         </div>
-        {topReactions && topReactions?.length > 1 && (
+        {topReactions && topReactions?.length > 0 && (
           <div className={cn('iconlist')}>
             <ul>
               {topReactions?.map((reaction) => (
