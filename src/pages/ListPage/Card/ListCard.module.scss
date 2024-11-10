@@ -76,3 +76,14 @@
       no-repeat right bottom;
   }
 }
+
+.list-card.hasImage {
+  color: $white;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.3);
+  h3 {
+    @include font-style(2.4rem, $white, 700);
+  }
+}

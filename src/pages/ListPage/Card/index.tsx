@@ -21,10 +21,17 @@ export default function Card({ data }: ListCardProps) {
     topReactions,
   } = data;
 
-  const cardBackground = backgroundImageURL || backgroundColor;
-
   return (
-    <div className={cn('list-card', cardBackground)}>
+    <div
+      className={cn('list-card', backgroundColor, {
+        hasImage: !!backgroundImageURL,
+      })}
+      style={
+        backgroundImageURL
+          ? { backgroundImage: `url(${backgroundImageURL})` }
+          : undefined
+      }
+    >
       <Link to={`/post/${id}`}>
         <div className={cn('txtlist')}>
           <h3>TO. {name}</h3>
