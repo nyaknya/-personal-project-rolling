@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './MainPage.module.scss';
 import MainHeader from '../../components/Header/MainHeader';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
+import styles from './MainPage.module.scss';
 
 const cn = classNames.bind(styles);
 

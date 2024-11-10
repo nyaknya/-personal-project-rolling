@@ -1,0 +1,8 @@
+.list-content {
+  @include container;
+  padding-top: 50px;
+
+  h2 {
+    @include font-style(24px, $black, 700);
+  }
+}
