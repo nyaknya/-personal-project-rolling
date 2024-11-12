@@ -1,4 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import classNames from 'classnames/bind';
 import styles from './CardList.module.scss';
 import apiRequest from '../../../utils/apiRequest';
@@ -16,7 +20,7 @@ export default function CardList({ sort }: CardListProps) {
 
   const getCardlist = useCallback(async () => {
     try {
-      const endpoint = `/recipients/?limit=15&${sort ? `sort=${sort}` : ''}`;
+      const endpoint = `/recipients/?limit=20&${sort ? `sort=${sort}` : ''}`;
       const data = await apiRequest({ endpoint });
       setCardlist(data.results);
     } catch (error) {
@@ -30,13 +34,13 @@ export default function CardList({ sort }: CardListProps) {
 
   return (
     <div className={cn('card-list-wrap')}>
-      <ul className={cn('card-list')}>
+      <Swiper spaceBetween={20} slidesPerView={1} navigation>
         {cardlist?.map((list) => (
-          <li key={list.id}>
+          <SwiperSlide key={list.id} className={cn('card-list-item')}>
             <Card data={list} />
-          </li>
+          </SwiperSlide>
         ))}
-      </ul>
+      </Swiper>
     </div>
   );
 }
