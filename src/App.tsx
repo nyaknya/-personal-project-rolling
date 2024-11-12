@@ -11,12 +11,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/list" element={<ListPage />} />
-        <Route path="/post" element={<PostPage />}>
-          <Route path=":id" element={<PostDetailPage />} />
-          <Route path=":id/edit" element={<PostEditPage />} />
-          <Route path=":id/message" element={<PostMessagePage />} />
+        <Route path="/">
+          <Route index element={<MainPage />} />
+          <Route path="/list" element={<ListPage />} />
+          <Route path="/post" element={<PostPage />} />
+          <Route path="/post/:id" element={<PostDetailPage />} />
+          <Route path="/post/:id/edit" element={<PostEditPage />} />
+          <Route path="/post/:id/message" element={<PostMessagePage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
