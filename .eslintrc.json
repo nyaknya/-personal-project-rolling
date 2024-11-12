@@ -17,7 +17,18 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/button-has-type": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": [
+          "swiper/react",
+          "swiper/css",
+          "swiper/css/navigation",
+          "swiper/modules"
+        ]
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

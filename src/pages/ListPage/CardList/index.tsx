@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -34,7 +35,25 @@ export default function CardList({ sort }: CardListProps) {
 
   return (
     <div className={cn('card-list-wrap')}>
-      <Swiper spaceBetween={20} slidesPerView={1} navigation>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={4}
+        slidesPerGroup={4}
+        navigation={{
+          nextEl: `.${cn('next')}`,
+          prevEl: `.${cn('prev')}`,
+        }}
+        modules={[Navigation]}
+      >
+        <button
+          className={cn('swiper-button', 'prev')}
+          aria-label="Previous Slide"
+        >
+          <img src="/images/arrowleft.svg" alt="Previous" />
+        </button>
+        <button className={cn('swiper-button', 'next')} aria-label="Next Slide">
+          <img src="/images/arrowright.svg" alt="Next" />
+        </button>
         {cardlist?.map((list) => (
           <SwiperSlide key={list.id} className={cn('card-list-item')}>
             <Card data={list} />
