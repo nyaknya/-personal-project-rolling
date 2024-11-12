@@ -14,10 +14,11 @@ function App() {
         <Route path="/">
           <Route index element={<MainPage />} />
           <Route path="/list" element={<ListPage />} />
-          <Route path="/post" element={<PostPage />} />
-          <Route path="/post/:id" element={<PostDetailPage />} />
-          <Route path="/post/:id/edit" element={<PostEditPage />} />
-          <Route path="/post/:id/message" element={<PostMessagePage />} />
+          <Route path="/post" element={<PostPage />}>
+            <Route index path="/:id" element={<PostDetailPage />} />
+            <Route index path="/:id/edit" element={<PostEditPage />} />
+            <Route index path="/:id/message" element={<PostMessagePage />} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
