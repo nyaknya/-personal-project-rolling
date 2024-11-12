@@ -2,6 +2,10 @@
   --swiper-navigation-color: #020202;
 }
 
+.swiper-button-disabled {
+  visibility: hidden;
+}
+
 * {
   padding: 0;
   margin: 0;

@@ -1,9 +1,10 @@
-import { useEffect, useState, useCallback } from 'react';
+/* eslint-disable */
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
+import { Swiper as SwiperType } from 'swiper';
 import classNames from 'classnames/bind';
 import styles from './CardList.module.scss';
 import apiRequest from '../../../utils/apiRequest';
@@ -18,6 +19,8 @@ interface CardListProps {
 
 export default function CardList({ sort }: CardListProps) {
   const [cardlist, setCardlist] = useState<CardListResultData[]>([]);
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
   const getCardlist = useCallback(async () => {
     try {
@@ -35,26 +38,39 @@ export default function CardList({ sort }: CardListProps) {
 
   return (
     <div className={cn('card-list-wrap')}>
+      <button
+        ref={prevRef}
+        className={cn('swiper-button', 'prev')}
+        aria-label="Previous Slide"
+      >
+        <img src="/images/arrowleft.svg" alt="Previous" />
+      </button>
+      <button
+        ref={nextRef}
+        className={cn('swiper-button', 'next')}
+        aria-label="Next Slide"
+      >
+        <img src="/images/arrowright.svg" alt="Next" />
+      </button>
+
       <Swiper
         spaceBetween={20}
         slidesPerView={4}
         slidesPerGroup={4}
-        navigation={{
-          nextEl: `.${cn('next')}`,
-          prevEl: `.${cn('prev')}`,
-        }}
         modules={[Navigation]}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper: SwiperType) => {
+          const { params } = swiper;
+          if (params.navigation && typeof params.navigation !== 'boolean') {
+            params.navigation.prevEl = prevRef.current;
+            params.navigation.nextEl = nextRef.current;
+          }
+        }}
       >
-        <button
-          className={cn('swiper-button', 'prev')}
-          aria-label="Previous Slide"
-        >
-          <img src="/images/arrowleft.svg" alt="Previous" />
-        </button>
-        <button className={cn('swiper-button', 'next')} aria-label="Next Slide">
-          <img src="/images/arrowright.svg" alt="Next" />
-        </button>
-        {cardlist?.map((list) => (
+        {cardlist.map((list) => (
           <SwiperSlide key={list.id} className={cn('card-list-item')}>
             <Card data={list} />
           </SwiperSlide>

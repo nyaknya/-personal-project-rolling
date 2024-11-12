@@ -39,6 +39,7 @@
 
   .rest-count {
     padding: 6px;
+    min-width: 28px;
     font-size: 1.2rem;
     background: $white;
     @include border-circle;
