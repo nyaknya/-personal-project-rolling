@@ -69,6 +69,21 @@ export default function CardList({ sort }: CardListProps) {
             params.navigation.nextEl = nextRef.current;
           }
         }}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 12,
+            slidesPerGroup: 1,
+          },
+          768: {
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+          },
+          1024: {
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+          },
+        }}
       >
         {cardlist.map((list) => (
           <SwiperSlide key={list.id} className={cn('card-list-item')}>
