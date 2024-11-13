@@ -4,6 +4,7 @@ import styles from './ListPage.module.scss';
 import MainHeader from '../../components/Header/MainHeader';
 import CardList from './CardList';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
+import CardListAll from './CardListAll';
 
 const cn = classNames.bind(styles);
 
@@ -29,6 +30,10 @@ export default function ListPage() {
           <PrimaryButton onClick={handleButtonClick}>
             나도 만들어보기
           </PrimaryButton>
+        </section>
+        <section className={cn('list-content')}>
+          <h2>모두가 만든 롤링 페이퍼 ❤️</h2>
+          <CardListAll />
         </section>
       </main>
     </>

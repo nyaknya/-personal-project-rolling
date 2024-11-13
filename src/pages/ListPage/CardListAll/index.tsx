@@ -1,17 +1,13 @@
 import { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames/bind';
-import styles from './CardList.module.scss';
+import styles from './CardListAll.module.scss';
 import apiRequest from '../../../utils/apiRequest';
 import Card from '../Card';
 import { CardListResultData } from '../../../types';
 
 const cn = classNames.bind(styles);
 
-interface CardListProps {
-  sort?: string;
-}
-
-export default function CardListAll({ sort }: CardListProps) {
+export default function CardListAll() {
   const [cardlist, setCardlist] = useState<CardListResultData[]>([]);
 
   const getCardlist = useCallback(async () => {
@@ -22,7 +18,7 @@ export default function CardListAll({ sort }: CardListProps) {
     } catch (error) {
       console.error(error);
     }
-  }, [sort]);
+  }, []);
 
   useEffect(() => {
     getCardlist();
