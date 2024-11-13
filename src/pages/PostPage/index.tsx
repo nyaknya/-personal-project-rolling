@@ -4,6 +4,7 @@ import styles from './PostPage.module.scss';
 import DefaultHeader from '../../components/Header/DefaultHeader';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
 import Input from '../../components/TextField/Input';
+import ColorList from './components/ColorList';
 
 const cn = classNames.bind(styles);
 
@@ -45,6 +46,9 @@ export default function PostPage() {
             <button type="button" onClick={handleOnTabClick}>
               이미지
             </button>
+          </div>
+          <div className={cn('toggle-tab-content')}>
+            <ColorList />
           </div>
         </section>
         <section className={cn('button-area')}>

@@ -1,0 +1,24 @@
+.color-option {
+  @include flex-arrange;
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+
+  &.Beige {
+    background: $beige200;
+  }
+
+  &.Purple {
+    background: $purple200;
+  }
+
+  &.Blue {
+    background: $blue200;
+  }
+
+  &.Green {
+    background: $green200;
+  }
+}
