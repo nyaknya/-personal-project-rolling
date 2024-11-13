@@ -13,7 +13,7 @@ export default function Input({ placeholder, onChange }: InputProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setInputValue(value);
 
     if (onChange) onChange(value);
