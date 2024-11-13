@@ -81,7 +81,7 @@ export default function CardList({ sort }: CardListProps) {
           },
           1024: {
             slidesPerView: 4,
-            slidesPerGroup: 1,
+            slidesPerGroup: 4,
           },
         }}
       >

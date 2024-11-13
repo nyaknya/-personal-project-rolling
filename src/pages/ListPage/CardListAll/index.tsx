@@ -16,7 +16,7 @@ export default function CardListAll({ sort }: CardListProps) {
 
   const getCardlist = useCallback(async () => {
     try {
-      const endpoint = `/recipients/?limit=15&${sort ? `sort=${sort}` : ''}`;
+      const endpoint = '/recipients/?limit=20';
       const data = await apiRequest({ endpoint });
       setCardlist(data.results);
     } catch (error) {
