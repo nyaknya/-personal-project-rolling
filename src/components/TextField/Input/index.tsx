@@ -3,15 +3,20 @@ import classNames from 'classnames/bind';
 import styles from './Input.module.scss';
 
 const cn = classNames.bind(styles);
+
 interface InputProps {
   placeholder: string;
+  onChange?: (value: string) => void;
 }
 
-export default function Input({ placeholder }: InputProps) {
+export default function Input({ placeholder, onChange }: InputProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    const value = e.target.value;
+    setInputValue(value);
+
+    if (onChange) onChange(value);
   };
 
   return (
