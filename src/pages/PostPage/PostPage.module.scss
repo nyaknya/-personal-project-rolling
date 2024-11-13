@@ -21,3 +21,39 @@
   @include container-720;
   padding-top: 70px;
 }
+
+.toggle-tab {
+  @include flex-arrange(flex-start);
+  position: relative;
+  padding-top: 24px;
+
+  .now-active {
+    @include flex-arrange;
+    position: absolute;
+    left: 0;
+    width: 122px;
+    height: 40px;
+    padding: 16px 8px;
+    background: $white;
+    border: 2px solid $purple600;
+    border-radius: 6px;
+    @include font-style(1.6rem, $purple600, 700);
+    transition: 0.3s all;
+    text-align: center;
+    cursor: pointer;
+
+    &.image {
+      left: 122px;
+    }
+  }
+
+  button {
+    @include flex-arrange;
+    width: 122px;
+    height: 40px;
+    border-radius: 6px;
+    padding: 16px 8px;
+    @include font-style(1.6rem, $black, 400);
+    cursor: pointer;
+  }
+}
