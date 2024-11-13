@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './PostPage.module.scss';
 import DefaultHeader from '../../components/Header/DefaultHeader';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
+import Input from '../../components/TextField/Input';
 
 const cn = classNames.bind(styles);
 
@@ -12,6 +13,7 @@ export default function PostPage() {
       <main>
         <section className={cn('post-add-content')}>
           <h2>To.</h2>
+          <Input placeholder="받는 사람 이름을 입력해 주세요" />
         </section>
         <section className={cn('post-add-content')}>
           <h2>배경화면을 선택해 주세요.</h2>
