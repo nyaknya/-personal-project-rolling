@@ -3,7 +3,7 @@
   padding-top: 50px;
 
   h2 {
-    @include font-style(24px, $black, 700);
+    @include font-style(2.4rem, $black, 700);
   }
 
   @media (max-width: 768px) {
