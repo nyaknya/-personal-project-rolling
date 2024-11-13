@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames/bind';
 import styles from './CardListAll.module.scss';
-import apiRequest from '../../../utils/apiRequest';
+import apiRequest from '../../../../utils/apiRequest';
 import Card from '../Card';
-import { CardListResultData } from '../../../types';
+import { CardListResultData } from '../../../../types';
 
 const cn = classNames.bind(styles);
 

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './ListCard.module.scss';
-import { CardListResultData } from '../../../types';
-import EmojiBadge from '../../../components/Badge/EmojiBadge';
+import { CardListResultData } from '../../../../types';
+import EmojiBadge from '../../../../components/Badge/EmojiBadge';
 
 const cn = classNames.bind(styles);
 

@@ -7,9 +7,9 @@ import 'swiper/css/navigation';
 import { Swiper as SwiperType } from 'swiper';
 import classNames from 'classnames/bind';
 import styles from './CardList.module.scss';
-import apiRequest from '../../../utils/apiRequest';
+import apiRequest from '../../../../utils/apiRequest';
 import Card from '../Card';
-import { CardListResultData } from '../../../types';
+import { CardListResultData } from '../../../../types';
 
 const cn = classNames.bind(styles);
 

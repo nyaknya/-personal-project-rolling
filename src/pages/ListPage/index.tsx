@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './ListPage.module.scss';
 import MainHeader from '../../components/Header/MainHeader';
-import CardList from './CardList';
+import CardList from './components/CardList';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
-import CardListAll from './CardListAll';
+import CardListAll from './components/CardListAll';
 
 const cn = classNames.bind(styles);
 
