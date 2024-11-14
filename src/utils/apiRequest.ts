@@ -2,15 +2,20 @@ interface ApiRequestProps {
   endpoint: string;
   method?: 'GET' | 'POST' | 'PATCH' | 'DELETE';
   body?: Record<string, unknown>;
+  useAlternateBase?: boolean;
 }
 
 export default async function apiRequest({
   endpoint,
   method = 'GET',
   body,
+  useAlternateBase = false,
 }: ApiRequestProps) {
   try {
-    const baseUrl = process.env.REACT_APP_API_BASE_URL;
+    const baseUrl = useAlternateBase
+      ? process.env.REACT_APP_API_BASE_URL_NOT_TEAM
+      : process.env.REACT_APP_API_BASE_URL;
+
     const url = `${baseUrl}${endpoint}`;
 
     const options: RequestInit = {

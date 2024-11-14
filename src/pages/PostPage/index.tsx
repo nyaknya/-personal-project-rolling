@@ -48,7 +48,7 @@ export default function PostPage() {
             </button>
           </div>
           <div className={cn('toggle-tab-content')}>
-            <ColorList />
+            {toggleTab === '이미지' ? null : <ColorList />}
           </div>
         </section>
         <section className={cn('button-area')}>
