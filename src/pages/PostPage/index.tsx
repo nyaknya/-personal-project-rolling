@@ -5,6 +5,7 @@ import DefaultHeader from '../../components/Header/DefaultHeader';
 import PrimaryButton from '../../components/Buttons/PrimaryButton';
 import Input from '../../components/TextField/Input';
 import ColorList from './components/ColorList';
+import BackgroundList from './components/BackgroundList';
 
 const cn = classNames.bind(styles);
 
@@ -48,7 +49,7 @@ export default function PostPage() {
             </button>
           </div>
           <div className={cn('toggle-tab-content')}>
-            {toggleTab === '이미지' ? null : <ColorList />}
+            {toggleTab === '이미지' ? <BackgroundList /> : <ColorList />}
           </div>
         </section>
         <section className={cn('button-area')}>

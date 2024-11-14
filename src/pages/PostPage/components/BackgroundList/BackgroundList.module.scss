@@ -1,0 +1,5 @@
+.background-list {
+  padding-top: 45px;
+  @include flex-arrange(flex-start);
+  gap: 16px;
+}

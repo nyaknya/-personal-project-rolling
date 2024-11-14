@@ -16,11 +16,13 @@ export default function BackgroundOption({
 }: BackgroundOptionProps) {
   return (
     <div
-      className={cn('background-option')}
+      className={cn('background-option', { selected })}
       onClick={() => onSelect(background)}
       role="button"
       tabIndex={0}
-      style={{ backgroundImage: `url(${background})` }}
+      style={{
+        backgroundImage: `url(${background})`,
+      }}
       onKeyDown={(e) => e.key === 'Enter' && onSelect(background)}
     >
       {selected && (
