@@ -6,7 +6,7 @@ const cn = classNames.bind(styles);
 interface BackgroundOptionProps {
   background: string;
   selected: boolean;
-  onSelect: (color: string) => void;
+  onSelect: (background: string | null) => void;
 }
 
 export default function BackgroundOption({
@@ -14,19 +14,27 @@ export default function BackgroundOption({
   selected,
   onSelect,
 }: BackgroundOptionProps) {
+  const handleClick = () => {
+    if (selected) {
+      onSelect(null);
+    } else {
+      onSelect(background);
+    }
+  };
+
   return (
     <div
       className={cn('background-option', { selected })}
-      onClick={() => onSelect(background)}
+      onClick={handleClick}
       role="button"
       tabIndex={0}
       style={{
         backgroundImage: `url(${background})`,
       }}
-      onKeyDown={(e) => e.key === 'Enter' && onSelect(background)}
+      onKeyDown={(e) => e.key === 'Enter' && handleClick()}
     >
       {selected && (
-        <img src="/images/colorselected.svg" alt="백그라운드 셀렉" />
+        <img src="/images/colorselected.svg" alt="백그라운드 선택됨" />
       )}
     </div>
   );

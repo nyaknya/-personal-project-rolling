@@ -8,7 +8,7 @@ const cn = classNames.bind(styles);
 
 interface BackgroundListProps {
   selectedBackground: string | null;
-  onBackgroundChange: (color: string) => void;
+  onBackgroundChange: (background: string | null) => void;
 }
 
 export default function BackgroundList({

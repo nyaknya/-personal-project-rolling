@@ -39,8 +39,12 @@ export default function PostPage() {
     setToggleTab(text);
   };
 
-  const handleBackgroundSelect = (background: string) => {
-    setSelectedBackground(background);
+  const handleBackgroundSelect = (background: string | null) => {
+    if (selectedBackground === background) {
+      setSelectedBackground(null);
+    } else {
+      setSelectedBackground(background);
+    }
   };
 
   const handleColorChange = (color: string) => {
@@ -97,7 +101,7 @@ export default function PostPage() {
           <PrimaryButton
             size="L"
             onClick={handleButtonClick}
-            disabled={!posttName}
+            disabled={!posttName || !(selectedColor || selectedBackground)}
           >
             생성하기
           </PrimaryButton>
