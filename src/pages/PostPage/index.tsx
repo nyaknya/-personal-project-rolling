@@ -21,17 +21,15 @@ export default function PostPage() {
   const handleButtonClick = () => {
     const body = {
       name: posttName,
-      selectedColor: selectedColor,
+      selectedColor,
       backgroundImageURL: selectedBackground,
     };
 
-    console.log(body);
-
-    // await apiRequest({
-    //   endpoint: '/recipients/',
-    //   method: 'POST',
-    //   body: body,
-    // });
+    apiRequest({
+      endpoint: '/recipients/',
+      method: 'POST',
+      body,
+    });
   };
 
   const handleOnTabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
