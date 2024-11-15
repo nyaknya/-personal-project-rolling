@@ -18,18 +18,23 @@ export default function PostPage() {
     null,
   );
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     const body = {
       name: posttName,
       selectedColor,
       backgroundImageURL: selectedBackground,
     };
 
-    apiRequest({
-      endpoint: '/recipients/',
-      method: 'POST',
-      body,
-    });
+    try {
+      const response = await apiRequest({
+        endpoint: '/recipients/',
+        method: 'POST',
+        body,
+      });
+      console.log('성공:', response);
+    } catch (error) {
+      console.error('API 요청 실패:', error);
+    }
   };
 
   const handleOnTabClick = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -23,6 +23,8 @@ export default function Input({ placeholder, onChange }: InputProps) {
   const handleIsEmpty = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.currentTarget.textContent === '') {
       setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
     }
   };
 

@@ -16,7 +16,12 @@ export default async function apiRequest({
       ? process.env.REACT_APP_API_BASE_URL_NOT_TEAM
       : process.env.REACT_APP_API_BASE_URL;
 
-    const url = `${baseUrl}${endpoint}`;
+    if (!baseUrl) {
+      throw new Error('Base URL이 설정되지 않았습니다.');
+    }
+
+    const encodedBaseUrl = encodeURI(baseUrl);
+    const url = `${encodedBaseUrl}${endpoint}`;
 
     const options: RequestInit = {
       method,
