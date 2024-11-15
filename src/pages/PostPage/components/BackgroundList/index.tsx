@@ -6,11 +6,16 @@ import apiRequest from '../../../../utils/apiRequest';
 
 const cn = classNames.bind(styles);
 
-export default function BackgroundList() {
+interface BackgroundListProps {
+  selectedBackground: string;
+  onBackgroundChange: (color: string) => void;
+}
+
+export default function BackgroundList({
+  selectedBackground,
+  onBackgroundChange,
+}: BackgroundListProps) {
   const [backgroundList, setBackgroundList] = useState<string[]>([]);
-  const [selectedBackground, setSelectedBackground] = useState<string | null>(
-    'https://picsum.photos/id/683/3840/2160',
-  );
 
   const getBackgroundList = async () => {
     try {
@@ -28,10 +33,6 @@ export default function BackgroundList() {
     getBackgroundList();
   }, []);
 
-  const handleColorSelect = (background: string) => {
-    setSelectedBackground(background);
-  };
-
   return (
     <div className={cn('background-list')}>
       {backgroundList.map((background) => (
@@ -39,7 +40,7 @@ export default function BackgroundList() {
           key={background}
           background={background}
           selected={selectedBackground === background}
-          onSelect={handleColorSelect}
+          onSelect={onBackgroundChange}
         />
       ))}
     </div>

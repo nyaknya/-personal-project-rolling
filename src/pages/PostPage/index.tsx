@@ -12,12 +12,23 @@ const cn = classNames.bind(styles);
 export default function PostPage() {
   const [posttName, setPostName] = useState<string>('');
   const [toggleTab, setToggleTab] = useState<string | null>('컬러');
+  const [selectedColor, setSelectedColor] = useState<string>('Beige');
+  const [selectedBackground, setSelectedBackground] = useState<string>(
+    'https://picsum.photos/id/683/3840/2160',
+  );
 
   const handleOnTabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const text = e.currentTarget.textContent;
     setToggleTab(text);
   };
 
+  const handleBackgroundSelect = (background: string) => {
+    setSelectedBackground(background);
+  };
+
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+  };
   return (
     <>
       <DefaultHeader />
@@ -49,7 +60,17 @@ export default function PostPage() {
             </button>
           </div>
           <div className={cn('toggle-tab-content')}>
-            {toggleTab === '이미지' ? <BackgroundList /> : <ColorList />}
+            {toggleTab === '이미지' ? (
+              <BackgroundList
+                selectedBackground={selectedBackground}
+                onBackgroundChange={handleBackgroundSelect}
+              />
+            ) : (
+              <ColorList
+                selectedColor={selectedColor}
+                onColorChange={handleColorChange}
+              />
+            )}
           </div>
         </section>
         <section className={cn('button-area')}>

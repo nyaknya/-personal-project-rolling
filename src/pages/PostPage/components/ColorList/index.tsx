@@ -5,34 +5,36 @@ import ColorOption from '../ColorOption';
 
 const cn = classNames.bind(styles);
 
-export default function ColorList() {
-  const [selectedColor, setSelectedColor] = useState<string | null>('Beige');
+interface ColorListProps {
+  selectedColor: string;
+  onColorChange: (color: string) => void;
+}
 
-  const handleColorSelect = (color: string) => {
-    setSelectedColor(color);
-  };
-
+export default function ColorList({
+  selectedColor,
+  onColorChange,
+}: ColorListProps) {
   return (
     <div className={cn('color-list')}>
       <ColorOption
         color="Beige"
         selected={selectedColor === 'Beige'}
-        onSelect={handleColorSelect}
+        onSelect={onColorChange}
       />
       <ColorOption
         color="Purple"
         selected={selectedColor === 'Purple'}
-        onSelect={handleColorSelect}
+        onSelect={onColorChange}
       />
       <ColorOption
         color="Blue"
         selected={selectedColor === 'Blue'}
-        onSelect={handleColorSelect}
+        onSelect={onColorChange}
       />
       <ColorOption
         color="Green"
         selected={selectedColor === 'Green'}
-        onSelect={handleColorSelect}
+        onSelect={onColorChange}
       />
     </div>
   );
