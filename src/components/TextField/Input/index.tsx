@@ -11,6 +11,7 @@ interface InputProps {
 
 export default function Input({ placeholder, onChange }: InputProps) {
   const [inputValue, setInputValue] = useState<string>('');
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -19,13 +20,23 @@ export default function Input({ placeholder, onChange }: InputProps) {
     if (onChange) onChange(value);
   };
 
+  const handleIsEmpty = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.currentTarget.textContent === '') {
+      setIsEmpty(true);
+    }
+  };
+
   return (
-    <input
-      type="text"
-      placeholder={placeholder}
-      className={cn('text-input')}
-      value={inputValue}
-      onChange={handleOnChange}
-    />
+    <div className={cn('input-box')}>
+      <input
+        type="text"
+        placeholder={placeholder}
+        className={cn('text-input', { isEmpty })}
+        value={inputValue}
+        onChange={handleOnChange}
+        onBlur={handleIsEmpty}
+      />
+      {isEmpty && <span className={cn({ isEmpty })}>값을 입력해 주세요.</span>}
+    </div>
   );
 }
