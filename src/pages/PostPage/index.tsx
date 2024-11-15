@@ -56,6 +56,7 @@ export default function PostPage() {
           <PrimaryButton
             size="L"
             onClick={() => console.log('받는 사람:', posttName)}
+            disabled={!posttName}
           >
             생성하기
           </PrimaryButton>
