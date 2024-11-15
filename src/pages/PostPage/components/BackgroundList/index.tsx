@@ -7,7 +7,7 @@ import apiRequest from '../../../../utils/apiRequest';
 const cn = classNames.bind(styles);
 
 interface BackgroundListProps {
-  selectedBackground: string;
+  selectedBackground: string | null;
   onBackgroundChange: (color: string) => void;
 }
 

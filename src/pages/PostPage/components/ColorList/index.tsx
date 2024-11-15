@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ColorList.module.scss';
 import ColorOption from '../ColorOption';

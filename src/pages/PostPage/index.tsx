@@ -6,6 +6,7 @@ import PrimaryButton from '../../components/Buttons/PrimaryButton';
 import Input from '../../components/TextField/Input';
 import ColorList from './components/ColorList';
 import BackgroundList from './components/BackgroundList';
+import apiRequest from '../../utils/apiRequest';
 
 const cn = classNames.bind(styles);
 
@@ -13,9 +14,25 @@ export default function PostPage() {
   const [posttName, setPostName] = useState<string>('');
   const [toggleTab, setToggleTab] = useState<string | null>('컬러');
   const [selectedColor, setSelectedColor] = useState<string>('Beige');
-  const [selectedBackground, setSelectedBackground] = useState<string>(
-    'https://picsum.photos/id/683/3840/2160',
+  const [selectedBackground, setSelectedBackground] = useState<string | null>(
+    null,
   );
+
+  const handleButtonClick = () => {
+    const body = {
+      name: posttName,
+      selectedColor: selectedColor,
+      backgroundImageURL: selectedBackground,
+    };
+
+    console.log(body);
+
+    // await apiRequest({
+    //   endpoint: '/recipients/',
+    //   method: 'POST',
+    //   body: body,
+    // });
+  };
 
   const handleOnTabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const text = e.currentTarget.textContent;
@@ -42,7 +59,10 @@ export default function PostPage() {
         </section>
         <section className={cn('post-add-content')}>
           <h2>배경화면을 선택해 주세요.</h2>
-          <p>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
+          <p>
+            컬러를 선택하거나, 이미지를 선택할 수 있습니다. 기본값은 컬러의
+            베이지 색상입니다.
+          </p>
           <div className={cn('toggle-tab')}>
             <div
               className={cn(
@@ -76,7 +96,7 @@ export default function PostPage() {
         <section className={cn('button-area')}>
           <PrimaryButton
             size="L"
-            onClick={() => console.log('받는 사람:', posttName)}
+            onClick={handleButtonClick}
             disabled={!posttName}
           >
             생성하기
