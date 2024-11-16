@@ -34,3 +34,32 @@ export interface TopReactions {
   emoji: string;
   count: number;
 }
+
+export interface PostRecipientData {
+  id: number;
+  name: string;
+  backgroundColor: string;
+  backgroundImageURL: string | null;
+  createdAt: string;
+  messageCount: number;
+  recentMessages: RecentMessage[];
+  reactionCount: number;
+  topReactions: Reaction[];
+}
+
+export interface PostRecentMessage {
+  id: number;
+  recipientId: number;
+  sender: string;
+  profileImageURL: string;
+  relationship: string;
+  content: string;
+  font: string;
+  createdAt: string;
+}
+
+export interface PostReaction {
+  id: number;
+  emoji: string;
+  count: number;
+}

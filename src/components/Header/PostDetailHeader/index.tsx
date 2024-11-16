@@ -3,8 +3,14 @@ import styles from './PostDetailHeader.module.scss';
 
 const cn = classNames.bind(styles);
 
-export default function PostDetailHeader() {
+interface PostDetailHeaderProps {
+  owner: string;
+}
+
+export default function PostDetailHeader({ owner }: PostDetailHeaderProps) {
   return (
-    <div className={cn('post-detail-header')}>포스트 디텔 헤더~ (서브헤더)</div>
+    <div className={cn('post-detail-header')}>
+      <div className={cn('post-owner')}>To. {owner}</div>
+    </div>
   );
 }

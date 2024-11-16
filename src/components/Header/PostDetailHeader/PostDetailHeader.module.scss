@@ -1,3 +1,8 @@
 .post-detail-header {
   @include container;
+  padding: 13px 0;
+
+  .post-owner {
+    @include font-style(2.8rem, $gray800, 700);
+  }
 }
