@@ -26,8 +26,12 @@
     height: 40px;
   }
 
-  &:disabled {
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active,
+  &:disabled:focus {
     background: $gray300;
+    cursor: unset;
   }
 
   &:hover {
