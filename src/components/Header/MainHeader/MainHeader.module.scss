@@ -5,7 +5,7 @@
 .main-header-inner {
   @include container;
   @include flex-arrange(space-between);
-  padding: 10px 0;
+  padding: 16px 0;
 
   @media (max-width: 1248px) {
     padding: 12px 24px;

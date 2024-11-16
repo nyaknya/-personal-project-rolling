@@ -18,33 +18,15 @@
     padding-bottom: 12px;
   }
 
+  p {
+    padding-top: 12px;
+  }
+
   img {
     width: 28px;
     height: 28px;
     @include border-circle;
     border: 2px solid $white;
-  }
-
-  .sender-wrap {
-    display: flex;
-    img {
-      margin-left: -12px;
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    padding-bottom: 12px;
-  }
-
-  .rest-count {
-    padding: 6px;
-    min-width: 28px;
-    font-size: 1.2rem;
-    background: $white;
-    @include border-circle;
-    @include flex-arrange;
-    margin-left: -12px;
   }
 
   .iconlist {

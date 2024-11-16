@@ -1,0 +1,19 @@
+.sender-wrap {
+  display: flex;
+  img {
+    margin-left: -12px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.rest-count {
+  padding: 6px;
+  min-width: 28px;
+  font-size: 1.2rem;
+  background: $white;
+  @include border-circle;
+  @include flex-arrange;
+  margin-left: -12px;
+}
