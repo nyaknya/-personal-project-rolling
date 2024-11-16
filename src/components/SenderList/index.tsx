@@ -1,16 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './SenderList.module.scss';
+import { Sender } from '../../types';
 
 const cn = classNames.bind(styles);
 
-interface Sender {
-  id: number;
-  profileImageURL: string;
-}
-
 interface SenderListProps {
   recentMessages: Sender[];
-  messageCount: number; // 총 메시지 갯수
+  messageCount: number;
 }
 
 export default function SenderList({

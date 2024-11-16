@@ -63,3 +63,8 @@ export interface PostReaction {
   emoji: string;
   count: number;
 }
+
+export interface Sender {
+  id: number;
+  profileImageURL: string;
+}

@@ -22,13 +22,6 @@
     padding-top: 12px;
   }
 
-  img {
-    width: 28px;
-    height: 28px;
-    @include border-circle;
-    border: 2px solid $white;
-  }
-
   .iconlist {
     padding-top: 16px;
     border-top: 1px solid rgba(0, 0, 0, 0.12);

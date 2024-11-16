@@ -1,8 +1,27 @@
 .post-detail-header {
   @include container;
+  @include flex-arrange(space-between);
   padding: 13px 0;
 
   .post-owner {
     @include font-style(2.8rem, $gray800, 700);
+  }
+
+  .recent {
+    @include flex-arrange;
+    gap: 12px;
+
+    p {
+      font-size: 18px;
+    }
+
+    &::after {
+      content: '';
+      @include flex-arrange;
+      margin: 0 28px;
+      width: 1px;
+      height: 28px;
+      background: $gray200;
+    }
   }
 }

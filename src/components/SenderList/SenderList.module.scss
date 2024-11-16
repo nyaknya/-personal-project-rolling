@@ -1,6 +1,10 @@
 .sender-wrap {
   display: flex;
   img {
+    width: 28px;
+    height: 28px;
+    @include border-circle;
+    border: 2px solid $white;
     margin-left: -12px;
     &:first-child {
       margin-left: 0;
@@ -16,4 +20,5 @@
   @include border-circle;
   @include flex-arrange;
   margin-left: -12px;
+  border: 1px solid #e3e3e3;
 }
