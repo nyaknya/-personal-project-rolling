@@ -26,18 +26,12 @@ export default function PostDetailPage() {
     getCardlist();
   }, [getCardlist]);
 
-  const { name, recentMessages, messageCount } = postDetailData || {};
-
   return (
     <>
       <DefaultHeader />
       <main>
         {postDetailData && (
-          <PostDetailHeader
-            owner={name!}
-            recentMessages={recentMessages!}
-            messageCount={messageCount!}
-          />
+          <PostDetailHeader postDetailData={postDetailData!} />
         )}
       </main>
     </>

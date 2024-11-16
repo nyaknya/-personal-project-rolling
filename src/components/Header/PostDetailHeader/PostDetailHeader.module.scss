@@ -24,4 +24,24 @@
       background: $gray200;
     }
   }
+
+  .post-infomation {
+    @include flex-arrange;
+  }
+
+  .iconlist {
+    @include flex-arrange(flex-start);
+    margin-right: 8px;
+
+    ul {
+      @include flex-arrange;
+      gap: 8px;
+    }
+
+    button {
+      margin-left: 2px;
+      padding: 6px;
+      background: none;
+    }
+  }
 }
