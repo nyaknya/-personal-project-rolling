@@ -1,3 +1,13 @@
+import DefaultHeader from '../../../components/Header/DefaultHeader';
+import PostDetailHeader from '../../../components/Header/PostDetailHeader';
+
 export default function PostDetailPage() {
-  return <span>포스트 상세 페이지</span>;
+  return (
+    <>
+      <DefaultHeader />
+      <main>
+        <PostDetailHeader />
+      </main>
+    </>
+  );
 }
