@@ -1,8 +1,12 @@
 .post-detail-header {
-  @include container;
-  @include flex-arrange(space-between);
+  width: 100%;
   padding: 13px 0;
   background: $white;
+
+  .post-header-inner {
+    @include container;
+    @include flex-arrange(space-between);
+  }
 
   .post-owner {
     @include font-style(2.8rem, $gray800, 700);
