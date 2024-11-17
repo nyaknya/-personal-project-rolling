@@ -3,6 +3,7 @@ import styles from './PostDetailHeader.module.scss';
 import SenderList from '../../SenderList';
 import { PostRecipientData } from '../../../types';
 import EmojiBadge from '../../Badge/EmojiBadge';
+import IconButton from '../../Buttons/IconButton';
 
 const cn = classNames.bind(styles);
 
@@ -46,6 +47,25 @@ export default function PostDetailHeader({
             </button>
           </div>
         )}
+        <div className={cn('post-add-emoji')}>
+          <IconButton
+            onClick={() => {
+              console.log('이모지 플러그인 삽입 예정');
+            }}
+          >
+            <img src="/images/emojiadd.svg" alt="이모지 추가 버튼 이미지" />
+            <span>추가</span>
+          </IconButton>
+        </div>
+        <div className={cn('post-share')}>
+          <IconButton
+            onClick={() => {
+              console.log('공유 로직 추가 예정');
+            }}
+          >
+            <img src="/images/share.svg" alt="포스트 공유 버튼 이미지" />
+          </IconButton>
+        </div>
       </div>
     </div>
   );

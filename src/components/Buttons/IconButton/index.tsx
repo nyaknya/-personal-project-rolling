@@ -1,6 +1,6 @@
+import { ReactNode } from 'react';
 import classNames from 'classnames/bind';
 import styles from './IconButton.module.scss';
-import { ReactNode } from 'react';
 
 const cn = classNames.bind(styles);
 
@@ -11,7 +11,7 @@ interface IconButtonProps {
 
 export default function IconButton({ onClick, children }: IconButtonProps) {
   return (
-    <button type="button" onClick={onClick}>
+    <button type="button" onClick={onClick} className={cn('icon-button')}>
       {children}
     </button>
   );

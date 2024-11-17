@@ -2,6 +2,7 @@
   @include container;
   @include flex-arrange(space-between);
   padding: 13px 0;
+  background: $white;
 
   .post-owner {
     @include font-style(2.8rem, $gray800, 700);
@@ -42,6 +43,19 @@
       margin-left: 2px;
       padding: 6px;
       background: none;
+    }
+  }
+
+  .post-add-emoji {
+    @include flex-arrange;
+
+    &::after {
+      content: '';
+      @include flex-arrange;
+      margin: 0 28px;
+      width: 1px;
+      height: 28px;
+      background: $gray200;
     }
   }
 }

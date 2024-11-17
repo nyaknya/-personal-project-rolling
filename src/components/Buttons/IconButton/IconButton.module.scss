@@ -1,0 +1,14 @@
+.icon-button {
+  @include flex-arrange;
+  gap: 4px;
+  background: transparent;
+  padding: 6px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid $gray300;
+  background: $white;
+
+  span {
+    @include font-style(1.6rem, $black, 500);
+  }
+}
