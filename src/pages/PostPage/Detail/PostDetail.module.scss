@@ -1,4 +1,5 @@
 .post-detail-content {
+  width: 100%;
   height: calc(100vh - 65px);
 
   &.beige {
@@ -16,4 +17,11 @@
   &.green {
     background: $green200;
   }
+}
+
+main.post-detail-content.hasImage {
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.3);
 }

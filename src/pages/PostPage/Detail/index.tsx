@@ -30,12 +30,21 @@ export default function PostDetailPage() {
     getCardlist();
   }, [getCardlist]);
 
-  const { backgroundColor } = postDetailData || {};
+  const { backgroundColor, backgroundImageURL } = postDetailData || {};
 
   return (
     <>
       <DefaultHeader />
-      <main className={cn('post-detail-content', backgroundColor)}>
+      <main
+        className={cn('post-detail-content', backgroundColor, {
+          hasImage: !!backgroundImageURL,
+        })}
+        style={
+          backgroundImageURL
+            ? { backgroundImage: `url(${backgroundImageURL})` }
+            : undefined
+        }
+      >
         {postDetailData && (
           <PostDetailHeader postDetailData={postDetailData!} />
         )}
