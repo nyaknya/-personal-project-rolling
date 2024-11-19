@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './PostPage.module.scss';
 import DefaultHeader from '../../components/Header/DefaultHeader';
@@ -18,6 +19,8 @@ export default function PostPage() {
     null,
   );
 
+  const navigate = useNavigate();
+
   const handleButtonClick = async () => {
     const body = {
       team: '3-심은주',
@@ -32,6 +35,8 @@ export default function PostPage() {
         method: 'POST',
         body,
       });
+      const { id } = response;
+      navigate(`/post/${id}`);
     } catch (error) {
       console.error('API 요청 실패:', error);
     }
