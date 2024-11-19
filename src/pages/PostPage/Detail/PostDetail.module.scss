@@ -1,4 +1,19 @@
 .post-detail-content {
   height: calc(100vh - 65px);
-  background: $gray100;
+
+  &.beige {
+    background: $beige200;
+  }
+
+  &.purple {
+    background: $purple200;
+  }
+
+  &.blue {
+    background: $blue200;
+  }
+
+  &.green {
+    background: $green200;
+  }
 }

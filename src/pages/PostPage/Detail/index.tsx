@@ -35,7 +35,7 @@ export default function PostDetailPage() {
   return (
     <>
       <DefaultHeader />
-      <main className={cn('post-detail-content', { backgroundColor })}>
+      <main className={cn('post-detail-content', backgroundColor)}>
         {postDetailData && (
           <PostDetailHeader postDetailData={postDetailData!} />
         )}
