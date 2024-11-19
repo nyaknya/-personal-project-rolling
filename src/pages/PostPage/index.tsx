@@ -20,8 +20,9 @@ export default function PostPage() {
 
   const handleButtonClick = async () => {
     const body = {
+      team: '3-심은주',
       name: posttName,
-      selectedColor,
+      backgroundColor: selectedColor.toLowerCase(),
       backgroundImageURL: selectedBackground,
     };
 
@@ -31,7 +32,6 @@ export default function PostPage() {
         method: 'POST',
         body,
       });
-      console.log('성공:', response);
     } catch (error) {
       console.error('API 요청 실패:', error);
     }

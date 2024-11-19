@@ -20,8 +20,7 @@ export default async function apiRequest({
       throw new Error('Base URL이 설정되지 않았습니다.');
     }
 
-    const encodedBaseUrl = encodeURI(baseUrl);
-    const url = `${encodedBaseUrl}${endpoint}`;
+    const url = `${baseUrl}${endpoint}`;
 
     const options: RequestInit = {
       method,
