@@ -6,6 +6,7 @@ import DefaultHeader from '../../../components/Header/DefaultHeader';
 import PostDetailHeader from '../../../components/Header/PostDetailHeader';
 import { PostRecipientData } from '../../../types';
 import apiRequest from '../../../utils/apiRequest';
+import CardList from '../components/CardList';
 
 const cn = classNames.bind(styles);
 
@@ -48,6 +49,9 @@ export default function PostDetailPage() {
         {postDetailData && (
           <PostDetailHeader postDetailData={postDetailData!} />
         )}
+        <section>
+          <CardList />
+        </section>
       </main>
     </>
   );
