@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { PaginatedMessages } from '../../../../types';
 import styles from './CardList.module.scss';
 import apiRequest from '../../../../utils/apiRequest';
+import Card from '../Card';
 
 const cn = classNames.bind(styles);
 
@@ -23,7 +24,6 @@ export default function CardList({ id }: CardListProps) {
       const endpoint = `/recipients/${id}/messages/`;
       const data = await apiRequest({ endpoint });
       setCardlist(data);
-      console.log('카드 리액션', data);
     } catch (error) {
       console.error(error);
     }
@@ -44,18 +44,8 @@ export default function CardList({ id }: CardListProps) {
         {cardlist.results &&
           cardlist.results.map((card) => {
             return (
-              <li key={id}>
-                <div className={cn('profile')}>
-                  <img src={card.profileImageURL} alt="프로필 사진" />
-                  <div className={cn('profile-user')}>
-                    <h3>From. {card.sender}</h3>
-                    <span>뱃지 컴포넌트 추가 예정 : {card.relationship}</span>
-                  </div>
-                  <div className={cn('content')}>
-                    <p>{card.content}</p>
-                    <span className={cn('create-date')}>{card.createdAt}</span>
-                  </div>
-                </div>
+              <li key={card.id} className={cn('card')}>
+                <Card card={card} />
               </li>
             );
           })}

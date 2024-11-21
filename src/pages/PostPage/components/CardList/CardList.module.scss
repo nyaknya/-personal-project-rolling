@@ -1,6 +1,6 @@
 .post-detail-cards {
   @include container;
-  padding-top: 120px;
+  padding: 120px 0;
 
   ul {
     display: grid;
@@ -18,5 +18,9 @@
   .add-new {
     height: 100%;
     @include flex-arrange;
+  }
+
+  .card {
+    padding: 28px 24px 24px;
   }
 }

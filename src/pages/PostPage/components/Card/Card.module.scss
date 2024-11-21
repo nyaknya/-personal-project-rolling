@@ -1,0 +1,36 @@
+.profile {
+  .profile-user {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid $gray200;
+    margin-bottom: 15px;
+
+    img {
+      @include border-circle;
+      width: 56px;
+      height: 56px;
+    }
+
+    h3 {
+      @include font-style(2rem, $black, 400);
+      padding-bottom: 5px;
+    }
+
+    .profile-name {
+      padding-bottom: 15px;
+    }
+  }
+
+  .content {
+    height: 108px;
+    margin-bottom: 15px;
+
+    p {
+      line-height: 1.5em;
+    }
+  }
+
+  .create-date {
+    @include font-style(1.2rem, $gray400, 400);
+  }
+}
