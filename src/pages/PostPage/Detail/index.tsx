@@ -50,7 +50,7 @@ export default function PostDetailPage() {
           <PostDetailHeader postDetailData={postDetailData!} />
         )}
         <section>
-          <CardList />
+          <CardList id={id!} />
         </section>
       </main>
     </>

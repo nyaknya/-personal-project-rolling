@@ -68,3 +68,21 @@ export interface Sender {
   id: number;
   profileImageURL: string;
 }
+
+export interface PaginatedMessages {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Message[];
+}
+
+export interface Message {
+  id: number;
+  recipientId: number;
+  sender: string;
+  profileImageURL: string;
+  relationship: string;
+  content: string;
+  font: string;
+  createdAt: string;
+}
