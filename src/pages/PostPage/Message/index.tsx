@@ -5,15 +5,21 @@ import DefaultHeader from '../../../components/Header/DefaultHeader';
 import Input from '../../../components/TextField/Input';
 import PrimaryButton from '../../../components/Buttons/PrimaryButton';
 import ProfileSelect from '../components/ProfileSelect';
+import Select from '../../../components/TextField/Select';
 
 const cn = classNames.bind(styles);
 
 export default function PostMessagePage() {
   const [sender, setSender] = useState<string>('');
   const [profileImage, setProfileImage] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState('지인');
 
   const handleProfileSelect = (profile: string) => {
     setProfileImage(profile);
+  };
+
+  const handleSelect = (option: string) => {
+    setSelectedOption(option);
   };
 
   return (
@@ -36,7 +42,11 @@ export default function PostMessagePage() {
         </section>
         <section className={cn('post-message-content')}>
           <h2>상대와의 관계</h2>
-          <div>드롭다운 컴포넌트 예정</div>
+          <Select
+            options={['지인', '동료', '가족', '친구']}
+            selected={selectedOption}
+            onSelect={handleSelect}
+          />
         </section>
         <section className={cn('post-message-content')}>
           <h2>내용을 입력해 주세요</h2>

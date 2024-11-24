@@ -44,13 +44,9 @@ export default function ProfileSelect({
         <span>프로필 이미지를 선택해주세요!</span>
         <ul>
           {profileList.map((profile) => (
-            /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
             <li
               key={profile}
               onClick={() => onSelect(profile)}
-              onKeyDown={(e) => e.key === 'Enter' && onSelect(profile)}
-              role="button"
-              tabIndex={0}
               className={cn({ selected: selected === profile })}
             >
               {selected === profile && (
