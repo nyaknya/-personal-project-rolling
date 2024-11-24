@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Select.module.scss';
+import useOutsideClick from '../../../hooks/useOutSideClick';
 
 const cn = classNames.bind(styles);
 
@@ -16,8 +17,16 @@ export default function Select({
   onSelect,
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const selectRef = useRef<HTMLDivElement>(null);
 
-  const toggleDropdown = () => {
+  useOutsideClick({
+    ref: selectRef,
+    callback: () => setIsOpen(false),
+    enabled: isOpen,
+  });
+
+  const toggleDropdown = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
     setIsOpen((prev) => !prev);
   };
 
@@ -27,11 +36,8 @@ export default function Select({
   };
 
   return (
-    <div
-      className={cn('custom-select', { open: isOpen })}
-      onClick={toggleDropdown}
-    >
-      <div className={cn('selected-option')}>
+    <div className={cn('custom-select', { open: isOpen })} ref={selectRef}>
+      <div className={cn('selected-option')} onClick={toggleDropdown}>
         {selected}
         <span className={cn('arrow')} />
       </div>
