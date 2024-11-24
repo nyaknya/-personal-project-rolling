@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ProfileSelect.module.scss';
 import apiRequest from '../../../../utils/apiRequest';
-import BackgroundList from '../BackgroundList';
 
 const cn = classNames.bind(styles);
 
 interface ProfileSelectProps {
-  selected?: string;
-  onSelect?: (color: string) => void;
+  selected: string | null;
+  onSelect: (profile: string) => void;
 }
 
 export default function ProfileSelect({
@@ -29,8 +28,6 @@ export default function ProfileSelect({
     }
   };
 
-  const defaultImage = profileList[0];
-
   useEffect(() => {
     getProfileList();
   }, []);
@@ -38,14 +35,33 @@ export default function ProfileSelect({
   return (
     <div className={cn('profile-select')}>
       <div className={cn('now-selected')}>
-        <img src={defaultImage} alt="현재 선택된 이미지" />
+        <img src={selected || profileList[0]} alt="현재 선택된 이미지" />
       </div>
       <div className={cn('profile-list')}>
         <span>프로필 이미지를 선택해주세요!</span>
         <ul>
           {profileList.map((profile) => (
-            <li key={profile}>
-              <img src={profile} alt="프로필 리스트 이미지" />
+            /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+            <li
+              key={profile}
+              onClick={() => onSelect(profile)}
+              onKeyDown={(e) => e.key === 'Enter' && onSelect(profile)}
+              role="button"
+              tabIndex={0}
+              className={cn({ selected: selected === profile })}
+            >
+              {selected === profile && (
+                <img
+                  src="/images/check.svg"
+                  alt="선택됨"
+                  className={cn('check')}
+                />
+              )}
+              <img
+                src={profile}
+                alt="프로필 리스트 이미지"
+                className={cn('profile-image')}
+              />
             </li>
           ))}
         </ul>

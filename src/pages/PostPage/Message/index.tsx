@@ -10,7 +10,11 @@ const cn = classNames.bind(styles);
 
 export default function PostMessagePage() {
   const [sender, setSender] = useState<string>('');
-  const [profileImage, setProfileImage] = useState<string>('default');
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+
+  const handleProfileSelect = (profile: string) => {
+    setProfileImage(profile);
+  };
 
   return (
     <>
@@ -25,7 +29,10 @@ export default function PostMessagePage() {
         </section>
         <section className={cn('post-message-content')}>
           <h2>프로필 이미지</h2>
-          <ProfileSelect selected={profileImage} />
+          <ProfileSelect
+            selected={profileImage}
+            onSelect={handleProfileSelect}
+          />
         </section>
         <section className={cn('post-message-content')}>
           <h2>상대와의 관계</h2>
@@ -43,7 +50,10 @@ export default function PostMessagePage() {
           <PrimaryButton
             size="L"
             onClick={() => {
-              console.log('예정');
+              console.log({
+                sender,
+                profileImage,
+              });
             }}
           >
             생성하기

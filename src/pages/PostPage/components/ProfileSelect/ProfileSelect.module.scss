@@ -1,11 +1,13 @@
 .profile-select {
   @include flex-arrange(flex-start);
-  gap: 28px;
+  gap: 20px;
   padding-top: 16px;
 
   .now-selected {
     img {
       @include border-circle;
+      width: 80px;
+      vertical-align: bottom;
     }
   }
 
@@ -19,6 +21,13 @@
       padding-bottom: 12px;
     }
 
+    .selected {
+      background: #222;
+      .profile-image {
+        opacity: 0.7;
+      }
+    }
+
     ul {
       display: flex;
       gap: 4px;
@@ -28,6 +37,14 @@
         height: 56px;
         @include border-circle;
         overflow: hidden;
+        position: relative;
+        cursor: pointer;
+
+        .check {
+          @include position-center;
+          width: 16px;
+          z-index: 1;
+        }
 
         img {
           width: 100%;
