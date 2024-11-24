@@ -30,23 +30,31 @@ export default function Select({
     setIsOpen((prev) => !prev);
   };
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (
+    event: React.MouseEvent<HTMLLIElement>,
+    option: string,
+  ) => {
+    event.stopPropagation();
     onSelect(option);
     setIsOpen(false);
   };
 
   return (
-    <div className={cn('custom-select', { open: isOpen })} ref={selectRef}>
-      <div className={cn('selected-option')} onClick={toggleDropdown}>
+    <div
+      className={cn('custom-select', { open: isOpen })}
+      ref={selectRef}
+      onClick={toggleDropdown}
+    >
+      <div className={cn('selected-option')}>
         {selected}
         <span className={cn('arrow')} />
       </div>
       {isOpen && (
-        <ul className={cn('options')}>
+        <ul className={cn('options')} onClick={(e) => e.stopPropagation()}>
           {options.map((option) => (
             <li
               key={option}
-              onClick={() => handleOptionClick(option)}
+              onClick={(e) => handleOptionClick(e, option)}
               className={cn({ selected: selected === option }, 'option')}
             >
               {option}
