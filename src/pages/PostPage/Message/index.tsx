@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Message.module.scss';
 import DefaultHeader from '../../../components/Header/DefaultHeader';
 import Input from '../../../components/TextField/Input';
 import PrimaryButton from '../../../components/Buttons/PrimaryButton';
-import { useState } from 'react';
+import ProfileSelect from '../components/ProfileSelect';
 
 const cn = classNames.bind(styles);
 
 export default function PostMessagePage() {
   const [sender, setSender] = useState<string>('');
+  const [profileImage, setProfileImage] = useState<string>('default');
 
   return (
     <>
@@ -23,7 +25,7 @@ export default function PostMessagePage() {
         </section>
         <section className={cn('post-message-content')}>
           <h2>프로필 이미지</h2>
-          <div>프로필 셀렉 컴포넌트 삽입 예정</div>
+          <ProfileSelect selected={profileImage} />
         </section>
         <section className={cn('post-message-content')}>
           <h2>상대와의 관계</h2>

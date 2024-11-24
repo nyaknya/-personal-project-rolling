@@ -1,0 +1,38 @@
+.profile-select {
+  @include flex-arrange(flex-start);
+  gap: 28px;
+  padding-top: 16px;
+
+  .now-selected {
+    img {
+      @include border-circle;
+    }
+  }
+
+  .profile-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+      @include font-style(1.6rem, $gray500, 400);
+      padding-bottom: 12px;
+    }
+
+    ul {
+      display: flex;
+      gap: 4px;
+
+      li {
+        width: 56px;
+        height: 56px;
+        @include border-circle;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
