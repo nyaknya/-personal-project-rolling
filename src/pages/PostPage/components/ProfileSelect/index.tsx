@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ProfileSelect.module.scss';
 import apiRequest from '../../../../utils/apiRequest';
@@ -16,21 +16,24 @@ export default function ProfileSelect({
 }: ProfileSelectProps) {
   const [profileList, setProfileList] = useState<string[]>([]);
 
-  const getProfileList = async () => {
+  const getProfileList = useCallback(async () => {
     try {
       const data = await apiRequest({
         endpoint: '/profile-images/',
         useAlternateBase: true,
       });
       setProfileList(data.imageUrls);
+      if (data.imageUrls.length > 0 && !selected) {
+        onSelect(data.imageUrls[0]); // 콜백으로 기본 선택값 전달
+      }
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [onSelect, selected]);
 
   useEffect(() => {
     getProfileList();
-  }, []);
+  }, [getProfileList]);
 
   return (
     <div className={cn('profile-select')}>
