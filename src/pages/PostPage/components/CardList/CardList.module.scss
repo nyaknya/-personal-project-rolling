@@ -35,6 +35,8 @@
   }
 
   @media (max-width: 512px) {
+    padding-top: 32px;
+
     ul {
       grid-template-columns: 1fr;
     }

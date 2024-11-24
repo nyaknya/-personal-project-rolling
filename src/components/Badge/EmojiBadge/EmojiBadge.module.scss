@@ -5,4 +5,9 @@
   padding: 8px 12px;
   background: rgba(0, 0, 0, 0.54);
   color: $white;
+
+  @media (max-width: 512px) {
+    @include font-style(1.4rem, $white, 400);
+    padding: 4px 8px;
+  }
 }

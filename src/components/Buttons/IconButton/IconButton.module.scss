@@ -16,4 +16,17 @@
   &:hover {
     background: $gray100;
   }
+
+  @media (max-width: 512px) {
+    padding: 6px 8px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      display: none;
+    }
+  }
 }

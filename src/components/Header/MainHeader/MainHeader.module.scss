@@ -1,5 +1,9 @@
 .main-header {
   border-bottom: 1px solid $gray300;
+
+  @media (max-width: 512px) {
+    display: none;
+  }
 }
 
 .main-header-inner {
