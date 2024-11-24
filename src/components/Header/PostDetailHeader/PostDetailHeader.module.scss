@@ -69,7 +69,8 @@
     }
   }
 
-  @media (max-width: 512px) {
+  // 모바일 뷰포인트 전환 기준 512나 특수로 깨지는 부분 선점
+  @media (max-width: 675px) {
     padding: 8px 0;
 
     .post-header-inner {
