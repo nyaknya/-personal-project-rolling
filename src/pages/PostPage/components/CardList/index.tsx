@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { PaginatedMessages } from '../../../../types';
 import styles from './CardList.module.scss';
@@ -37,9 +38,11 @@ export default function CardList({ id }: CardListProps) {
     <div className={cn('post-detail-cards')}>
       <ul>
         <li>
-          <div className={cn('add-new')}>
-            <img src="/images/addreaction.svg" alt="리액션 추가하기 이미지" />
-          </div>
+          <Link to={`/post/${id}/message/`}>
+            <div className={cn('add-new')}>
+              <img src="/images/addreaction.svg" alt="리액션 추가하기 이미지" />
+            </div>
+          </Link>
         </li>
         {cardlist.results &&
           cardlist.results.map((card) => {
