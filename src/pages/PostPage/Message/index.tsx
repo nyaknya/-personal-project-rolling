@@ -3,10 +3,13 @@ import styles from './Message.module.scss';
 import DefaultHeader from '../../../components/Header/DefaultHeader';
 import Input from '../../../components/TextField/Input';
 import PrimaryButton from '../../../components/Buttons/PrimaryButton';
+import { useState } from 'react';
 
 const cn = classNames.bind(styles);
 
 export default function PostMessagePage() {
+  const [sender, setSender] = useState<string>('');
+
   return (
     <>
       <DefaultHeader />
@@ -15,7 +18,7 @@ export default function PostMessagePage() {
           <h2>From.</h2>
           <Input
             placeholder="이름을 입력해 주세요."
-            onChange={() => console.log('추가예정')}
+            onChange={(value) => setSender(value)}
           />
         </section>
         <section className={cn('post-message-content')}>
