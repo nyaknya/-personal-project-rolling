@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Card.module.scss';
 import { Message } from '../../../../types';
+import RelationshipBadge from '../../../../components/Badge/RelationshipBadge';
 
 const cn = classNames.bind(styles);
 
@@ -21,7 +22,7 @@ export default function Card({ card }: CardProps) {
           <h3>
             From. <strong>{sender}</strong>
           </h3>
-          <span>뱃지 컴포넌트 추가 예정 : {relationship}</span>
+          <RelationshipBadge type={relationship} />
         </div>
       </div>
       <div className={cn('content')}>

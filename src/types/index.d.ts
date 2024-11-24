@@ -81,7 +81,7 @@ export interface Message {
   recipientId: number;
   sender: string;
   profileImageURL: string;
-  relationship: string;
+  relationship: '지인' | '동료' | '가족' | '친구';
   content: string;
   font: string;
   createdAt: string;
