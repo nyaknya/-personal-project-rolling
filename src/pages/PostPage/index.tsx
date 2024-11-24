@@ -12,7 +12,7 @@ import apiRequest from '../../utils/apiRequest';
 const cn = classNames.bind(styles);
 
 export default function PostPage() {
-  const [posttName, setPostName] = useState<string>('');
+  const [postName, setPostName] = useState<string>('');
   const [toggleTab, setToggleTab] = useState<string | null>('컬러');
   const [selectedColor, setSelectedColor] = useState<string>('Beige');
   const [selectedBackground, setSelectedBackground] = useState<string | null>(
@@ -24,7 +24,7 @@ export default function PostPage() {
   const handleButtonClick = async () => {
     const body = {
       team: '3-심은주',
-      name: posttName,
+      name: postName,
       backgroundColor: selectedColor.toLowerCase(),
       backgroundImageURL: selectedBackground,
     };
@@ -109,7 +109,7 @@ export default function PostPage() {
           <PrimaryButton
             size="L"
             onClick={handleButtonClick}
-            disabled={!posttName || !(selectedColor || selectedBackground)}
+            disabled={!postName || !(selectedColor || selectedBackground)}
           >
             생성하기
           </PrimaryButton>
