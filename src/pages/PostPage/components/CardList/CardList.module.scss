@@ -23,4 +23,20 @@
   .card {
     padding: 28px 24px 24px;
   }
+
+  @media (max-width: 1200px) {
+    padding: 92px 24px;
+  }
+
+  @media (max-width: 768px) {
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 512px) {
+    ul {
+      grid-template-columns: 1fr;
+    }
+  }
 }
