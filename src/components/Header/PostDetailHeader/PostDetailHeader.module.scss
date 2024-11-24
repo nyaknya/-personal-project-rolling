@@ -62,4 +62,10 @@
       background: $gray200;
     }
   }
+
+  @media (max-width: 1024px) {
+    .recent {
+      display: none;
+    }
+  }
 }
