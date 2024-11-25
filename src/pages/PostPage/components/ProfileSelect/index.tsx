@@ -24,7 +24,7 @@ export default function ProfileSelect({
       });
       setProfileList(data.imageUrls);
       if (data.imageUrls.length > 0 && !selected) {
-        onSelect(data.imageUrls[0]); // 콜백으로 기본 선택값 전달
+        onSelect(data.imageUrls[0]);
       }
     } catch (error) {
       console.error(error);

@@ -6,6 +6,11 @@
   visibility: hidden;
 }
 
+.ql-formats .ql-header.ql-picker,
+.ql-toolbar .ql-formats button.ql-clean {
+  display: none;
+}
+
 * {
   padding: 0;
   margin: 0;

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import classNames from 'classnames/bind';
 import styles from './Message.module.scss';
 import DefaultHeader from '../../../components/Header/DefaultHeader';
@@ -13,6 +15,7 @@ export default function PostMessagePage() {
   const [sender, setSender] = useState<string>('');
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [selectedOption, setSelectedOption] = useState('지인');
+  const [textEditer, setTextEditer] = useState('');
 
   const handleProfileSelect = (profile: string) => {
     setProfileImage(profile);
@@ -50,7 +53,13 @@ export default function PostMessagePage() {
         </section>
         <section className={cn('post-message-content')}>
           <h2>내용을 입력해 주세요</h2>
-          <div>에디터 컴포넌트 예정</div>
+          <div className={cn('text-editer')}>
+            <ReactQuill
+              theme="snow"
+              value={textEditer}
+              onChange={setTextEditer}
+            />
+          </div>
         </section>
         <section className={cn('post-message-content')}>
           <h2>폰트 선택</h2>

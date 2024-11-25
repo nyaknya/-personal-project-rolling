@@ -21,3 +21,13 @@
   @include container-720;
   padding-top: 70px;
 }
+
+.text-editer {
+  padding-top: 12px;
+  height: 250px;
+  margin-bottom: 50px;
+
+  & > div {
+    height: 100%;
+  }
+}
