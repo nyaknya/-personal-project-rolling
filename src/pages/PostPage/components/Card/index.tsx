@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import classNames from 'classnames/bind';
 import styles from './Card.module.scss';
 import { Message } from '../../../../types';
@@ -25,9 +26,10 @@ export default function Card({ card }: CardProps) {
           <RelationshipBadge type={relationship} />
         </div>
       </div>
-      <div className={cn('content')}>
-        <p>{content}</p>
-      </div>
+      <div
+        className={cn('content')}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
+      />
       <div className={cn('create-date')}>{createdDate}</div>
     </div>
   );

@@ -20,10 +20,11 @@
 .button-area {
   @include container-720;
   padding-top: 70px;
+  padding-bottom: 50px;
 }
 
-.text-editer {
-  padding-top: 12px;
+.text-editor {
+  margin-top: 12px;
   height: 250px;
   margin-bottom: 50px;
 
