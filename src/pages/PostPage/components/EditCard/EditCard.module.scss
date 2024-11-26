@@ -1,4 +1,6 @@
 .profile {
+  position: relative;
+
   .profile-user {
     display: flex;
     gap: 12px;
@@ -38,5 +40,13 @@
 
   .create-date {
     @include font-style(1.2rem, $gray400, 400);
+  }
+
+  button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
   }
 }

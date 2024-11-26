@@ -2,9 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { PaginatedMessages } from '../../../../types';
-import styles from './CardList.module.scss';
+import styles from '../CardList/CardList.module.scss';
 import apiRequest from '../../../../utils/apiRequest';
-import Card from '../Card';
+import EditCard from '../EditCard';
 
 const cn = classNames.bind(styles);
 
@@ -12,7 +12,7 @@ interface CardListProps {
   id: string;
 }
 
-export default function CardList({ id }: CardListProps) {
+export default function EditCardList({ id }: CardListProps) {
   const [cardlist, setCardlist] = useState<PaginatedMessages>({
     count: 0,
     next: null,
@@ -26,13 +26,25 @@ export default function CardList({ id }: CardListProps) {
       const data = await apiRequest({ endpoint });
       setCardlist(data);
     } catch (error) {
-      console.error(error);
+      console.error('카드 리스트 로드 실패:', error);
     }
   }, [id]);
 
   useEffect(() => {
     getCardlist();
   }, [getCardlist]);
+
+  const handleDeleteCard = (cardId: string) => {
+    setCardlist((prev) => {
+      const filteredResults = prev.results.filter(
+        (card) => String(card.id) !== cardId,
+      );
+      return {
+        ...prev,
+        results: filteredResults,
+      };
+    });
+  };
 
   return (
     <div className={cn('post-detail-cards')}>
@@ -44,14 +56,11 @@ export default function CardList({ id }: CardListProps) {
             </div>
           </Link>
         </li>
-        {cardlist.results &&
-          cardlist.results.map((card) => {
-            return (
-              <li key={card.id} className={cn('card')}>
-                <Card card={card} />
-              </li>
-            );
-          })}
+        {cardlist.results.map((card) => (
+          <li key={card.id} className={cn('card')}>
+            <EditCard card={card} onDelete={handleDeleteCard} />
+          </li>
+        ))}
       </ul>
     </div>
   );

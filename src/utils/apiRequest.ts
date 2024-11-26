@@ -39,8 +39,13 @@ export default async function apiRequest({
       throw new Error(`API 요청 실패: ${response.status}`);
     }
 
-    const data = await response.json();
-    return data;
+    const contentType = response.headers.get('Content-Type');
+    if (contentType && contentType.includes('application/json')) {
+      const data = await response.json();
+      return data;
+    }
+
+    return null;
   } catch (error) {
     console.error('API 요청 중 오류 발생:', error);
     throw error;
