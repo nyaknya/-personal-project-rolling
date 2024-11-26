@@ -5,6 +5,7 @@ import { PaginatedMessages } from '../../../../types';
 import styles from '../CardList/CardList.module.scss';
 import apiRequest from '../../../../utils/apiRequest';
 import EditCard from '../EditCard';
+import useInfiniteScroll from '../../../../hooks/useInfiniteScroll';
 
 const cn = classNames.bind(styles);
 
@@ -19,32 +20,42 @@ export default function EditCardList({ id }: CardListProps) {
     previous: null,
     results: [],
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const limit = 8;
+  const [offset, setOffset] = useState(0);
 
   const getCardlist = useCallback(async () => {
     try {
-      const endpoint = `/recipients/${id}/messages/`;
+      setIsLoading(true);
+      const endpoint = `/recipients/${id}/messages/?limit=${limit}&offset=${offset}`;
       const data = await apiRequest({ endpoint });
-      setCardlist(data);
+      setCardlist((prev) => ({
+        ...data,
+        results: [...prev.results, ...data.results], // 기존 데이터와 병합
+      }));
+      setIsLoading(false);
     } catch (error) {
       console.error('카드 리스트 로드 실패:', error);
+      setIsLoading(false);
     }
-  }, [id]);
+  }, [id, limit, offset]);
 
   useEffect(() => {
     getCardlist();
   }, [getCardlist]);
 
   const handleDeleteCard = (cardId: string) => {
-    setCardlist((prev) => {
-      const filteredResults = prev.results.filter(
-        (card) => String(card.id) !== cardId,
-      );
-      return {
-        ...prev,
-        results: filteredResults,
-      };
-    });
+    setCardlist((prev) => ({
+      ...prev,
+      results: prev.results.filter((card) => String(card.id) !== cardId),
+    }));
   };
+
+  const observerRef = useInfiniteScroll({
+    onIntersect: () => setOffset((prev) => prev + limit),
+    isLoading,
+    hasNextPage: Boolean(cardlist.next),
+  });
 
   return (
     <div className={cn('post-detail-cards')}>
@@ -62,6 +73,8 @@ export default function EditCardList({ id }: CardListProps) {
           </li>
         ))}
       </ul>
+      {isLoading && <div className={cn('loading')}>로딩 중...</div>}
+      <div ref={observerRef} className={cn('observer-target')} />
     </div>
   );
 }

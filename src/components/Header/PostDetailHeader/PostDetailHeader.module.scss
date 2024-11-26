@@ -119,5 +119,16 @@
         margin: 0 15px;
       }
     }
+
+    .post-delete {
+      position: fixed;
+      right: 12px;
+      top: 8px;
+      z-index: 10;
+
+      button {
+        height: 30px;
+      }
+    }
   }
 }
