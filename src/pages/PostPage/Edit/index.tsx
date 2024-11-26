@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Edit.module.scss';
 import DefaultHeader from '../../../components/Header/DefaultHeader';
@@ -15,6 +15,7 @@ export default function PostEditPage() {
     useState<PostRecipientData | null>(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const getCardlist = useCallback(async () => {
     try {
@@ -33,6 +34,18 @@ export default function PostEditPage() {
 
   const { backgroundColor, backgroundImageURL } = postDetailData || {};
 
+  const handleDeleteButton = async () => {
+    try {
+      await apiRequest({
+        endpoint: `/recipients/${id}/`,
+        method: 'DELETE',
+      });
+      navigate(`/list/`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <DefaultHeader />
@@ -47,7 +60,11 @@ export default function PostEditPage() {
         }
       >
         {postDetailData && (
-          <PostDetailHeader postDetailData={postDetailData!} />
+          <PostDetailHeader
+            postDetailData={postDetailData!}
+            hasDeleteButton
+            onClick={handleDeleteButton}
+          />
         )}
         <section>
           <EditCardList id={id!} />

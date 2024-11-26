@@ -10,6 +10,7 @@
 
   .post-owner {
     @include font-style(2.8rem, $gray800, 700);
+    position: relative;
   }
 
   .recent {
@@ -60,6 +61,20 @@
       width: 1px;
       height: 28px;
       background: $gray200;
+    }
+  }
+
+  .post-delete {
+    margin-left: 20px;
+
+    button {
+      @include flex-arrange;
+      border-radius: 8px;
+      width: 92px;
+      height: 40px;
+      background: $error;
+      @include font-style(1.6rem, $white, 400);
+      cursor: pointer;
     }
   }
 

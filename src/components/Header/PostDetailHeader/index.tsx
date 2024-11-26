@@ -9,10 +9,14 @@ const cn = classNames.bind(styles);
 
 interface PostDetailHeaderProps {
   postDetailData: PostRecipientData;
+  hasDeleteButton?: boolean;
+  onClick?: () => void;
 }
 
 export default function PostDetailHeader({
   postDetailData,
+  hasDeleteButton,
+  onClick,
 }: PostDetailHeaderProps) {
   const { name, recentMessages, messageCount, topReactions } =
     postDetailData || {};
@@ -67,6 +71,17 @@ export default function PostDetailHeader({
               <img src="/images/share.svg" alt="포스트 공유 버튼 이미지" />
             </IconButton>
           </div>
+          {hasDeleteButton && (
+            <div className={cn('post-delete')}>
+              <button
+                onClick={onClick}
+                type="button"
+                className={cn('post-delete-button')}
+              >
+                삭제하기
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
