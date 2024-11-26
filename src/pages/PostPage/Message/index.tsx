@@ -105,7 +105,11 @@ export default function PostMessagePage() {
         </section>
 
         <section className={cn('button-area')}>
-          <PrimaryButton size="L" onClick={handleCreateMessage}>
+          <PrimaryButton
+            size="L"
+            onClick={handleCreateMessage}
+            disabled={!sender || !textEditor}
+          >
             생성하기
           </PrimaryButton>
         </section>
