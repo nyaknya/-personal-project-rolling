@@ -6,16 +6,16 @@ const cn = classNames.bind(styles);
 
 interface SenderListProps {
   recentMessages: Sender[];
-  messageCount: number;
+  messageCount: number; // 전체 메시지 수
 }
 
 export default function SenderList({
   recentMessages,
   messageCount,
 }: SenderListProps) {
-  const maxVisible = 3;
-  const visibleSenders = recentMessages.slice(0, maxVisible);
-  const restCount = Math.max(messageCount - maxVisible, 0);
+  const maxVisible = 3; // 최대 보이는 이미지 수
+  const visibleSenders = recentMessages.slice(0, maxVisible); // 최대 3개까지 최근 메시지 표시
+  const restCount = Math.max(messageCount - maxVisible, 0); // 전체 메시지에서 최대 3개를 제외한 나머지 계산
 
   return (
     <div className={cn('sender-wrap')}>

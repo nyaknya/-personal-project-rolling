@@ -17,6 +17,7 @@
   min-width: 28px;
   font-size: 1.2rem;
   background: $white;
+  color: $black;
   @include border-circle;
   @include flex-arrange;
   margin-left: -12px;
