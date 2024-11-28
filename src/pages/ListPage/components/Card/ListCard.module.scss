@@ -67,4 +67,8 @@
   h3 {
     @include font-style(2.4rem, $white, 700);
   }
+
+  .iconlist {
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+  }
 }
