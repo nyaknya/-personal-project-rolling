@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 import classNames from 'classnames/bind';
 import styles from './PostDetailHeader.module.scss';
 import SenderList from '../../SenderList';
@@ -20,6 +22,15 @@ export default function PostDetailHeader({
 }: PostDetailHeaderProps) {
   const { name, recentMessages, messageCount, topReactions } =
     postDetailData || {};
+
+  const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+
+  const handleEmojiSelect = (emojiData: EmojiClickData) => {
+    const emoji = String.fromCodePoint(
+      ...emojiData.unified.split('-').map((hex) => parseInt(hex, 16)),
+    );
+    console.log('Selected emoji:', emoji);
+  };
 
   return (
     <div className={cn('post-detail-header')}>
@@ -52,16 +63,19 @@ export default function PostDetailHeader({
               </button>
             </div>
           )}
+
           <div className={cn('post-add-emoji')}>
-            <IconButton
-              onClick={() => {
-                console.log('이모지 플러그인 삽입 예정');
-              }}
-            >
+            <IconButton onClick={() => setIsEmojiPickerOpen((prev) => !prev)}>
               <img src="/images/emojiadd.svg" alt="이모지 추가 버튼 이미지" />
               <span>추가</span>
             </IconButton>
+            {isEmojiPickerOpen && (
+              <div className={cn('emoji-picker')}>
+                <EmojiPicker onEmojiClick={handleEmojiSelect} />
+              </div>
+            )}
           </div>
+
           <div className={cn('post-share')}>
             <IconButton
               onClick={() => {
@@ -71,6 +85,7 @@ export default function PostDetailHeader({
               <img src="/images/share.svg" alt="포스트 공유 버튼 이미지" />
             </IconButton>
           </div>
+
           {hasDeleteButton && (
             <div className={cn('post-delete')}>
               <button

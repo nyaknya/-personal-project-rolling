@@ -53,6 +53,7 @@
 
   .post-add-emoji {
     @include flex-arrange;
+    position: relative;
 
     &::after {
       content: '';
@@ -62,6 +63,12 @@
       height: 28px;
       background: $gray200;
     }
+  }
+
+  .emoji-picker {
+    position: absolute;
+    top: 45px;
+    right: 58px;
   }
 
   .post-delete {
