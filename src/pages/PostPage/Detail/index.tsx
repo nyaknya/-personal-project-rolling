@@ -16,7 +16,7 @@ export default function PostDetailPage() {
 
   const { id } = useParams();
 
-  const getCardlist = useCallback(async () => {
+  const getPostData = useCallback(async () => {
     try {
       const endpoint = `/recipients/${id}/`;
       const data = await apiRequest({ endpoint });
@@ -28,8 +28,8 @@ export default function PostDetailPage() {
   }, [id]);
 
   useEffect(() => {
-    getCardlist();
-  }, [getCardlist]);
+    getPostData();
+  }, [getPostData]);
 
   const { backgroundColor, backgroundImageURL } = postDetailData || {};
 

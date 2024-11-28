@@ -31,7 +31,6 @@ export default function PostDetailHeader({
   useOutsideClick({
     ref: emojiPickerRef,
     callback: () => {
-      console.log('Outside click detected');
       setIsEmojiPickerOpen(false);
     },
     enabled: isEmojiPickerOpen,
