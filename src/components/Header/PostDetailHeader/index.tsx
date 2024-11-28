@@ -7,6 +7,7 @@ import { PostRecipientData } from '../../../types';
 import EmojiBadge from '../../Badge/EmojiBadge';
 import IconButton from '../../Buttons/IconButton';
 import useOutsideClick from '../../../hooks/useOutSideClick';
+import apiRequest from '../../../utils/apiRequest';
 
 const cn = classNames.bind(styles);
 
@@ -21,13 +22,12 @@ export default function PostDetailHeader({
   hasDeleteButton,
   onClick,
 }: PostDetailHeaderProps) {
-  const { name, recentMessages, messageCount, topReactions } =
+  const { id, name, recentMessages, messageCount, topReactions } =
     postDetailData || {};
 
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
   const emojiPickerRef = useRef<HTMLDivElement>(null);
 
-  // Handle outside click to close emoji picker
   useOutsideClick({
     ref: emojiPickerRef,
     callback: () => {
@@ -37,11 +37,26 @@ export default function PostDetailHeader({
     enabled: isEmojiPickerOpen,
   });
 
-  const handleEmojiSelect = (emojiData: EmojiClickData) => {
+  const handleEmojiSelect = async (emojiData: EmojiClickData) => {
     const emoji = String.fromCodePoint(
       ...emojiData.unified.split('-').map((hex) => parseInt(hex, 16)),
     );
-    console.log('Selected emoji:', emoji);
+
+    const body = {
+      emoji,
+      type: 'increase',
+    };
+
+    try {
+      await apiRequest({
+        endpoint: `/recipients/${id}/reactions/`,
+        method: 'POST',
+        body,
+      });
+    } catch (error) {
+      console.error('API 요청 실패:', error);
+    }
+
     setIsEmojiPickerOpen(false);
   };
 
