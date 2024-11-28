@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useRef, useState } from 'react';
 import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 import classNames from 'classnames/bind';
 import styles from './PostDetailHeader.module.scss';
@@ -6,6 +6,7 @@ import SenderList from '../../SenderList';
 import { PostRecipientData } from '../../../types';
 import EmojiBadge from '../../Badge/EmojiBadge';
 import IconButton from '../../Buttons/IconButton';
+import useOutsideClick from '../../../hooks/useOutSideClick';
 
 const cn = classNames.bind(styles);
 
@@ -24,12 +25,28 @@ export default function PostDetailHeader({
     postDetailData || {};
 
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+  const emojiPickerRef = useRef<HTMLDivElement>(null);
+
+  // Handle outside click to close emoji picker
+  useOutsideClick({
+    ref: emojiPickerRef,
+    callback: () => {
+      console.log('Outside click detected');
+      setIsEmojiPickerOpen(false);
+    },
+    enabled: isEmojiPickerOpen,
+  });
 
   const handleEmojiSelect = (emojiData: EmojiClickData) => {
     const emoji = String.fromCodePoint(
       ...emojiData.unified.split('-').map((hex) => parseInt(hex, 16)),
     );
     console.log('Selected emoji:', emoji);
+    setIsEmojiPickerOpen(false);
+  };
+
+  const toggleEmojiPicker = () => {
+    setIsEmojiPickerOpen((prev) => !prev);
   };
 
   return (
@@ -65,13 +82,17 @@ export default function PostDetailHeader({
           )}
 
           <div className={cn('post-add-emoji')}>
-            <IconButton onClick={() => setIsEmojiPickerOpen((prev) => !prev)}>
+            <IconButton onClick={toggleEmojiPicker}>
               <img src="/images/emojiadd.svg" alt="이모지 추가 버튼 이미지" />
               <span>추가</span>
             </IconButton>
             {isEmojiPickerOpen && (
-              <div className={cn('emoji-picker')}>
-                <EmojiPicker onEmojiClick={handleEmojiSelect} />
+              <div ref={emojiPickerRef} className={cn('emoji-picker')}>
+                <EmojiPicker
+                  onEmojiClick={handleEmojiSelect}
+                  width={306}
+                  height={380}
+                />
               </div>
             )}
           </div>

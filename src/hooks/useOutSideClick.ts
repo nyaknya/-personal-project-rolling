@@ -17,12 +17,12 @@ export default function useOutsideClick<
     };
 
     if (enabled) {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       if (enabled) {
-        document.removeEventListener('click', handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
       }
     };
   }, [ref, callback, enabled]);
