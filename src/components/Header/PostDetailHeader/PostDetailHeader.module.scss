@@ -38,6 +38,7 @@
   .iconlist {
     @include flex-arrange(flex-start);
     margin-right: 8px;
+    position: relative;
 
     ul {
       @include flex-arrange;
@@ -48,6 +49,10 @@
       margin-left: 2px;
       padding: 6px;
       background: none;
+
+      & > img {
+        cursor: pointer;
+      }
     }
   }
 

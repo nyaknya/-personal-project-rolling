@@ -8,6 +8,7 @@ import EmojiBadge from '../../Badge/EmojiBadge';
 import IconButton from '../../Buttons/IconButton';
 import useOutsideClick from '../../../hooks/useOutSideClick';
 import apiRequest from '../../../utils/apiRequest';
+import EmojiList from '../../../pages/PostPage/components/EmojiList';
 
 const cn = classNames.bind(styles);
 
@@ -26,6 +27,7 @@ export default function PostDetailHeader({
     postDetailData || {};
 
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+  const [isEmojiListOpen, setIsEmojiListOpen] = useState(false); // 이모지 리스트 상태
   const emojiPickerRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick({
@@ -63,6 +65,10 @@ export default function PostDetailHeader({
     setIsEmojiPickerOpen((prev) => !prev);
   };
 
+  const toggleEmojiList = () => {
+    setIsEmojiListOpen((prev) => !prev);
+  };
+
   return (
     <div className={cn('post-detail-header')}>
       <div className={cn('post-header-inner')}>
@@ -80,18 +86,22 @@ export default function PostDetailHeader({
             </div>
           )}
 
-          {topReactions && topReactions?.length > 0 && (
+          {topReactions && topReactions.length > 0 && (
             <div className={cn('iconlist')}>
               <ul>
-                {topReactions?.map((reaction) => (
+                {topReactions.map((reaction) => (
                   <li key={reaction.id}>
                     <EmojiBadge emoji={reaction.emoji} count={reaction.count} />
                   </li>
                 ))}
               </ul>
-              <button className={cn('iconlist-moreview')}>
+              <button
+                className={cn('iconlist-moreview')}
+                onClick={toggleEmojiList}
+              >
                 <img src="/images/arrowdown.svg" alt="이모지 더보기" />
               </button>
+              {isEmojiListOpen && <EmojiList id={id} />}
             </div>
           )}
 
