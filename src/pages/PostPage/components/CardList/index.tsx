@@ -35,7 +35,6 @@ export default function CardList({ id }: CardListProps) {
       }));
       setIsLoading(false);
     } catch (error) {
-      console.error('카드 로드 실패:', error);
       setIsLoading(false);
     }
   }, [id, limit, offset]);

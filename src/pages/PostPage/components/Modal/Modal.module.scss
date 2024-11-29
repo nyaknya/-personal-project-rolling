@@ -1,0 +1,59 @@
+.modal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.6);
+
+  .modal-content {
+    @include position-center;
+    background: $white;
+    border-radius: 16px;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    width: 600px;
+    height: 480px;
+  }
+
+  .profile-user {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid $gray200;
+    margin-bottom: 15px;
+
+    img {
+      @include border-circle;
+      width: 56px;
+      height: 56px;
+    }
+
+    h3 {
+      @include font-style(2rem, $black, 400);
+      padding-bottom: 5px;
+    }
+
+    .profile-name {
+      padding-bottom: 15px;
+      min-width: 120px;
+    }
+
+    .create-date {
+      width: 100%;
+      align-self: center;
+      text-align: right;
+      @include font-style(1.4rem, $gray400, 400);
+    }
+  }
+
+  .content {
+    height: 260px;
+    margin-bottom: 24px;
+    overflow-y: auto;
+  }
+
+  .button-section {
+    text-align: center;
+  }
+}

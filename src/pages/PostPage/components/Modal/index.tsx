@@ -1,29 +1,25 @@
-import { useState } from 'react';
-import DOMPurify from 'dompurify';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames/bind';
-import styles from './Card.module.scss';
+import DOMPurify from 'dompurify';
+import styles from './Modal.module.scss';
 import { Message } from '../../../../types';
 import RelationshipBadge from '../../../../components/Badge/RelationshipBadge';
-import Modal from '../Modal';
+import PrimaryButton from '../../../../components/Buttons/PrimaryButton';
 
 const cn = classNames.bind(styles);
 
-interface CardProps {
+interface ModalProps {
   card: Message;
+  onClose: () => void;
 }
 
-export default function Card({ card }: CardProps) {
+export default function Modal({ card, onClose }: ModalProps) {
   const { profileImageURL, sender, relationship, content, createdAt } = card;
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
   const createdDate = createdAt.substring(0, createdAt.indexOf('T'));
 
-  return (
-    <>
-      <div className={cn('profile')} onClick={openModal}>
+  return ReactDOM.createPortal(
+    <div className={cn('modal-overlay')} onClick={onClose}>
+      <div className={cn('modal-content')} onClick={(e) => e.stopPropagation()}>
         <div className={cn('profile-user')}>
           <img src={profileImageURL} alt="프로필 사진" />
           <div className={cn('profile-name')}>
@@ -32,15 +28,19 @@ export default function Card({ card }: CardProps) {
             </h3>
             <RelationshipBadge type={relationship} />
           </div>
+          <div className={cn('create-date')}>{createdDate}</div>
         </div>
         <div
           className={cn('content')}
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
         />
-        <div className={cn('create-date')}>{createdDate}</div>
+        <div className={cn('button-section')}>
+          <PrimaryButton size="S" onClick={onClose}>
+            확인
+          </PrimaryButton>
+        </div>
       </div>
-
-      {isModalOpen && <Modal card={card} onClose={closeModal} />}
-    </>
+    </div>,
+    document.getElementById('modal-root')!,
   );
 }
