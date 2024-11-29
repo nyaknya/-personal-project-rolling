@@ -83,8 +83,8 @@ export default function PostDetailHeader({
       objectType: 'feed',
       content: {
         title: '롤링',
-        description: '누구나 롤링페이퍼를 손쉽게 만들 수 있는 사이트요',
-        imageUrl: '/images/logo.svg',
+        description: '누구나 롤링페이퍼를 손쉽게 만들 수 있는 사이트',
+        imageUrl: 'https://rolling-five.vercel.app/images/kakaoshare.jpg',
         link: {
           mobileWebUrl: `${window.location.origin}/post/${id}`,
           webUrl: `${window.location.origin}/post/${id}`,
