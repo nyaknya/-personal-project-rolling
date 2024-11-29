@@ -1,4 +1,17 @@
 .profile {
+  &.noto .content * {
+    font-family: 'noto sans' !important;
+  }
+
+  &.nanummyeongjo .content * {
+    font-family: 'Nanum Myeongjo', serif !important;
+  }
+
+  &.nanumpen .content * {
+    font-family: 'Nanum Pen Script' !important;
+    font-size: 1.8rem;
+  }
+
   .profile-user {
     display: flex;
     gap: 12px;

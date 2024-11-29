@@ -13,7 +13,8 @@ interface CardProps {
 }
 
 export default function Card({ card }: CardProps) {
-  const { profileImageURL, sender, relationship, content, createdAt } = card;
+  const { profileImageURL, sender, relationship, content, createdAt, font } =
+    card;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -21,9 +22,16 @@ export default function Card({ card }: CardProps) {
 
   const createdDate = createdAt.substring(0, createdAt.indexOf('T'));
 
+  const fontstyle = cn({
+    pretendard: font === 'Pretendard',
+    noto: font === 'Noto Sans',
+    nanummyeongjo: font === '나눔명조',
+    nanumpen: font === '나눔손글씨 손편지체',
+  });
+
   return (
     <>
-      <div className={cn('profile')} onClick={openModal}>
+      <div className={cn('profile', fontstyle)} onClick={openModal}>
         <div className={cn('profile-user')}>
           <img src={profileImageURL} alt="프로필 사진" />
           <div className={cn('profile-name')}>
