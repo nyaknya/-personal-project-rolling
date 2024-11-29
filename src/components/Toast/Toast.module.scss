@@ -1,0 +1,20 @@
+.toast-container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  bottom: 70px;
+  width: 524px;
+  height: 64px;
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  @include flex-arrange(space-between, center);
+  @include font-style(1.6rem, $white, 400);
+  gap: 16px;
+
+  span {
+    width: 100%;
+    text-align: left;
+  }
+}

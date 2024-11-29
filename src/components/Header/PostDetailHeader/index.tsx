@@ -9,6 +9,8 @@ import IconButton from '../../Buttons/IconButton';
 import useOutsideClick from '../../../hooks/useOutSideClick';
 import apiRequest from '../../../utils/apiRequest';
 import EmojiList from '../../../pages/PostPage/components/EmojiList';
+import Toast from '../../Toast';
+import Popover from '../../../pages/PostPage/components/Popover';
 
 const cn = classNames.bind(styles);
 
@@ -25,9 +27,11 @@ export default function PostDetailHeader({
 }: PostDetailHeaderProps) {
   const { id, name, recentMessages, messageCount, topReactions } =
     postDetailData || {};
-
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
-  const [isEmojiListOpen, setIsEmojiListOpen] = useState(false); // 이모지 리스트 상태
+  const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   const emojiPickerRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick({
@@ -67,6 +71,30 @@ export default function PostDetailHeader({
 
   const toggleEmojiList = () => {
     setIsEmojiListOpen((prev) => !prev);
+  };
+
+  const togglePopover = () => setIsPopoverOpen((prev) => !prev);
+
+  const handleShareToKakao = () => {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '제목을 여기에 입력하세요',
+        description: '설명을 여기에 입력하세요',
+        imageUrl: '/images/example.jpg', // 예제 이미지 URL
+        link: {
+          mobileWebUrl: `${window.location.origin}/post/${id}`,
+          webUrl: `${window.location.origin}/post/${id}`,
+        },
+      },
+    });
+    setIsPopoverOpen(false);
+  };
+
+  const handleCopyURL = () => {
+    const url = `${window.location.origin}/post/${id}`;
+    navigator.clipboard.writeText(url);
+    setToastMessage('URL이 복사되었습니다.');
   };
 
   return (
@@ -122,14 +150,28 @@ export default function PostDetailHeader({
           </div>
 
           <div className={cn('post-share')}>
-            <IconButton
-              onClick={() => {
-                console.log('공유 로직 추가 예정');
-              }}
-            >
+            <IconButton onClick={togglePopover}>
               <img src="/images/share.svg" alt="포스트 공유 버튼 이미지" />
             </IconButton>
+            {isPopoverOpen && (
+              <Popover onClose={() => setIsPopoverOpen(false)}>
+                <ul>
+                  <li>
+                    <button onClick={handleShareToKakao}>
+                      카카오톡 공유하기
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={handleCopyURL}>URL 공유하기</button>
+                  </li>
+                </ul>
+              </Popover>
+            )}
           </div>
+
+          {toastMessage && (
+            <Toast onClose={() => setToastMessage(null)}>{toastMessage}</Toast>
+          )}
 
           {hasDeleteButton && (
             <div className={cn('post-delete')}>
