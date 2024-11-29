@@ -5,13 +5,22 @@ import styles from './IconButton.module.scss';
 const cn = classNames.bind(styles);
 
 interface IconButtonProps {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
+  classname?: string;
 }
 
-export default function IconButton({ onClick, children }: IconButtonProps) {
+export default function IconButton({
+  onClick,
+  children,
+  classname,
+}: IconButtonProps) {
   return (
-    <button type="button" onClick={onClick} className={cn('icon-button')}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn('icon-button', classname)}
+    >
       {children}
     </button>
   );

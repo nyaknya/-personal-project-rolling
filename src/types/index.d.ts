@@ -86,3 +86,9 @@ export interface Message {
   font: string;
   createdAt: string;
 }
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}

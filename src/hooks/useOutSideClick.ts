@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 
-export type useOutSideClickProps<T> = {
+export type UseOutsideClickProps<T> = {
   ref: React.RefObject<T>;
-  callback: () => void;
+  callback: (event: MouseEvent) => void;
   enabled?: boolean;
 };
 
 export default function useOutsideClick<
   T extends HTMLElement = HTMLDivElement,
->({ ref, callback, enabled = true }: useOutSideClickProps<T>) {
+>({ ref, callback, enabled = true }: UseOutsideClickProps<T>) {
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        callback();
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        callback(event);
       }
     };
 

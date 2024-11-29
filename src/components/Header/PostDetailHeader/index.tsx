@@ -73,15 +73,18 @@ export default function PostDetailHeader({
     setIsEmojiListOpen((prev) => !prev);
   };
 
-  const togglePopover = () => setIsPopoverOpen((prev) => !prev);
+  const togglePopover = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setIsPopoverOpen((prev) => !prev);
+  };
 
   const handleShareToKakao = () => {
-    Kakao.Share.sendDefault({
+    window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: '제목을 여기에 입력하세요',
-        description: '설명을 여기에 입력하세요',
-        imageUrl: '/images/example.jpg', // 예제 이미지 URL
+        title: '롤링',
+        description: '누구나 롤링페이퍼를 손쉽게 만들 수 있는 사이트요',
+        imageUrl: '/images/logo.svg',
         link: {
           mobileWebUrl: `${window.location.origin}/post/${id}`,
           webUrl: `${window.location.origin}/post/${id}`,
@@ -150,21 +153,19 @@ export default function PostDetailHeader({
           </div>
 
           <div className={cn('post-share')}>
-            <IconButton onClick={togglePopover}>
+            <IconButton onClick={togglePopover} classname="post-share">
               <img src="/images/share.svg" alt="포스트 공유 버튼 이미지" />
             </IconButton>
-            {isPopoverOpen && (
-              <Popover onClose={() => setIsPopoverOpen(false)}>
-                <ul>
-                  <li>
-                    <button onClick={handleShareToKakao}>카카오톡 공유</button>
-                  </li>
-                  <li>
-                    <button onClick={handleCopyURL}>URL 공유</button>
-                  </li>
-                </ul>
-              </Popover>
-            )}
+            <Popover isOpen={isPopoverOpen} setIsOpen={setIsPopoverOpen}>
+              <ul>
+                <li>
+                  <button onClick={handleShareToKakao}>카카오톡 공유</button>
+                </li>
+                <li>
+                  <button onClick={handleCopyURL}>URL 공유</button>
+                </li>
+              </ul>
+            </Popover>
           </div>
 
           {toastMessage && (
