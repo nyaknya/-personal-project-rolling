@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './PostDetail.module.scss';
 import DefaultHeader from '../../../components/Header/DefaultHeader';
@@ -15,20 +15,32 @@ export default function PostDetailPage() {
     useState<PostRecipientData | null>(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const getCardlist = useCallback(async () => {
     try {
       const endpoint = `/recipients/${id}/`;
       const data = await apiRequest({ endpoint });
+
+      if (!data || !data.id) {
+        navigate('/list', { replace: true });
+        return;
+      }
+
       setPostDetailData(data);
     } catch (error) {
       console.error(error);
+      navigate('/list', { replace: true });
     }
-  }, [id]);
+  }, [id, navigate]);
 
   useEffect(() => {
-    getCardlist();
-  }, [getCardlist]);
+    if (!id) {
+      navigate('/list', { replace: true });
+    } else {
+      getCardlist();
+    }
+  }, [id, getCardlist, navigate]);
 
   const { backgroundColor, backgroundImageURL } = postDetailData || {};
 
