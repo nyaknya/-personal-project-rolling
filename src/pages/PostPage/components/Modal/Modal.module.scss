@@ -56,4 +56,14 @@
   .button-section {
     text-align: center;
   }
+
+  @media (max-width: 512px) {
+    .modal-content {
+      width: calc(100% - 48px);
+    }
+
+    .content {
+      height: 220px;
+    }
+  }
 }
