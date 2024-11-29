@@ -33,6 +33,7 @@ export default function CardList({ id }: CardListProps) {
         ...data,
         results: [...prev.results, ...data.results],
       }));
+      console.log(data);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);

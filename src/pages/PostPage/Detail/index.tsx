@@ -21,7 +21,6 @@ export default function PostDetailPage() {
       const endpoint = `/recipients/${id}/`;
       const data = await apiRequest({ endpoint });
       setPostDetailData(data);
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
