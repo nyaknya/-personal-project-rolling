@@ -6,6 +6,11 @@
   visibility: hidden;
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 .ql-formats .ql-header.ql-picker,
 .ql-toolbar .ql-formats button.ql-clean {
   display: none;
