@@ -17,4 +17,8 @@
     width: 100%;
     text-align: left;
   }
+
+  @media (max-width: 675px) {
+    width: 80%;
+  }
 }
