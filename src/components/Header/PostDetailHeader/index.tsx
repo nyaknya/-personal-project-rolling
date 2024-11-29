@@ -157,12 +157,10 @@ export default function PostDetailHeader({
               <Popover onClose={() => setIsPopoverOpen(false)}>
                 <ul>
                   <li>
-                    <button onClick={handleShareToKakao}>
-                      카카오톡 공유하기
-                    </button>
+                    <button onClick={handleShareToKakao}>카카오톡 공유</button>
                   </li>
                   <li>
-                    <button onClick={handleCopyURL}>URL 공유하기</button>
+                    <button onClick={handleCopyURL}>URL 공유</button>
                   </li>
                 </ul>
               </Popover>
