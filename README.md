@@ -1,5 +1,12 @@
-# ❤️ Rolling
+## ![logo](https://github.com/user-attachments/assets/66dbdde4-efc3-4609-ad88-306e14697821)
+
 누구나 손쉽게 만들 수 있는 온라인 롤링페이퍼 사이트
+
+```
+해당 프로젝트는 코드잇 스프린트 과정을 참여하며 제공됐던 api를 사용했습니다.
+진행한 프로젝트를 선정하는 과정에서 제외됐던 롤링의 사이트 자료들이 아까워 개인적으로 제작했습니다.
+팀 프로젝트로 진행했어야 할 과제를 개인적으로 해보며 어떤 것들이 협업에서 사용됐으면 좋았는지 알 수 있어 좋았습니다.
+```
 
 ## 💻 사용 기술
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white">
@@ -26,3 +33,12 @@
  ┣ 📜App.tsx               
  ┗ 📜index.tsx             
 ```
+
+## 👓 Priview
+![image](https://github.com/user-attachments/assets/82ada548-494b-49de-9666-952e2974b301)
+
+## 🧩 프로젝트 주요 기능
+- Swiper를 활용한 좌우 슬라이더
+- 페이지네이션
+- 무한스크롤
+- 모달
