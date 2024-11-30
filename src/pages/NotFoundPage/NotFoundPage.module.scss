@@ -1,0 +1,16 @@
+.notfound-content {
+  width: 100%;
+  height: 100vh;
+  @include flex-arrange;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+
+  h2 {
+    @include font-style(5rem, $purple800, 800);
+  }
+
+  p {
+    @include font-style(1.8rem, $gray500);
+  }
+}
